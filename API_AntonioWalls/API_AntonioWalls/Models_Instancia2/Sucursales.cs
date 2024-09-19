@@ -31,7 +31,7 @@ public partial class Sucursales
 
     public string? Correo { get; set; }
 
-    public DateOnly? FechaAp { get; set; }
+    public DateTime? FechaAp { get; set; }
 
     public virtual ICollection<Cliente> Clientes { get; set; } = new List<Cliente>();
 

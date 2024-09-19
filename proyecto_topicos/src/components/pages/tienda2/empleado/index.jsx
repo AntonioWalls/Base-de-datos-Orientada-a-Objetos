@@ -17,7 +17,7 @@ const Empleados = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/empleado');
+    navigate('/empleadoB');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdEmpleado(null); // Resetear ID
@@ -27,7 +27,7 @@ const Empleados = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdEmpleado(idEmpleado);
-    navigate('/empleado/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/empleadoB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (

@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaClientes = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const clientes = useSelector((state) => state.getCliente.clientes?.response || []);
+  const clientes = useSelector((state) => state.getClienteB.clientes?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {

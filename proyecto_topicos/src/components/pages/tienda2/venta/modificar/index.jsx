@@ -2,6 +2,7 @@ import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 

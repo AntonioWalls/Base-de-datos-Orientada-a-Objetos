@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj": {}
+    "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj": {
+    "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
+        "projectUniqueName": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
         "projectName": "API_AntonioWalls",
-        "projectPath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
+        "projectPath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
         "packagesPath": "C:\\Users\\Antonio Walls\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\obj\\",
+        "outputPath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

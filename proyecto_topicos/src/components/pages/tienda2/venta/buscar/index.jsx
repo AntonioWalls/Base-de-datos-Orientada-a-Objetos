@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaVentas = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const ventas = useSelector((state) => state.getVenta.ventas?.response || []);
+  const ventas = useSelector((state) => state.getVentaB.ventas?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {

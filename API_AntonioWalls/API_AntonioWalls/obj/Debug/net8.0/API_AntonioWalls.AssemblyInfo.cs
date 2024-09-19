@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API_AntonioWalls")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a29f40296751f07dd877e10d8d36ff700610850")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec709aa89aef44df8c428f959cf64bfc64ef3d23")]
 [assembly: System.Reflection.AssemblyProductAttribute("API_AntonioWalls")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API_AntonioWalls")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

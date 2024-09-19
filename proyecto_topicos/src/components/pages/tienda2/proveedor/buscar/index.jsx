@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaProveedor = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const proveedores = useSelector((state) => state.getProveedor.proveedores?.response || []);
+  const proveedores = useSelector((state) => state.getProveedorB.proveedores?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
@@ -24,11 +24,17 @@ const TablaProveedor = ({ mostrarFormulario }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    setDataState(proveedores);
+    console.log("Datos recibidos de la API:", proveedores);
+    const mappedData = proveedores.map((item) => ({
+      ...item,
+      id: item.idProv || item.idSucursal || item.idOtraEntidad, // Asegúrate de que uno de estos campos exista
+    }));
+    setDataState(mappedData);
   }, [proveedores]);
+  
 
-  // Función para eliminar la sucursal seleccionada
-  const handleEliminar = (idProveedor) => {
+  // Función para eliminar el proveedor seleccionado
+  const handleEliminar = (id) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -38,14 +44,14 @@ const TablaProveedor = ({ mostrarFormulario }) => {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(eliminarSucursal(idProveedor)).then((response) => {
+        dispatch(eliminarProveedor(id)).then((response) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
               text: "El proveedor ha sido eliminado.",
               icon: "success"
             });
-            dispatch(listarProveedor()); // Recargar las sucursales después de eliminar
+            dispatch(listarProveedor()); // Recargar los proveedores después de eliminar
           } else {
             Swal.fire({
               title: "Error",
@@ -58,8 +64,8 @@ const TablaProveedor = ({ mostrarFormulario }) => {
     });
   };
 
-  const handleEditar = (idProveedor) => {
-    mostrarFormulario(true, idProveedor);
+  const handleEditar = (id) => {
+    mostrarFormulario(true, id); // Usamos el campo genérico id
   };
 
   const handleNuevo = () => {

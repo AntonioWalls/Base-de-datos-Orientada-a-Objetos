@@ -18,7 +18,7 @@ const Proveedores = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/proveedor');
+    navigate('/proveedorB');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdProveedor(null); // Resetear ID
@@ -28,7 +28,7 @@ const Proveedores = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdProveedor(idProveedor);
-    navigate('/proveedor/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/proveedorB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (

@@ -11,12 +11,12 @@ namespace API_AntonioWalls.Controllers_Instancia1
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class CocteleriaInstancia2 : ControllerBase
+    public class CocteleriaInstancia1 : ControllerBase
     {
         public readonly Sucursal1Context sucursal1Context;
         public readonly IMapper _mapper;
 
-        public CocteleriaInstancia2(Sucursal1Context context, IMapper mapper)
+        public CocteleriaInstancia1(Sucursal1Context context, IMapper mapper)
         {
             sucursal1Context = context;
             _mapper = mapper;

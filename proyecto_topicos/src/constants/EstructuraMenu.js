@@ -27,43 +27,43 @@ export const EstructuraMenu = {
           },
           {
             "etiqueta": "Clientes",
-            "Path": "/clientes",
+            "Path": "/clientesA",
             "icon": "mdi-account",
             "Hijos": []
           },
           {
             "etiqueta": "Empleados",
-            "Path": "/empleados",
+            "Path": "/empleadosA",
             "icon": "mdi-account-group",
             "Hijos": []
           },
           {
             "etiqueta": "Ventas",
-            "Path": "/ventas",
+            "Path": "/ventasA",
             "icon": "mdi-cart",
             "Hijos": []
           },
           {
             "etiqueta": "Cocteleria",
-            "Path": "/cocteleria",
+            "Path": "/cocteleriaA",
             "icon": "mdi-glass-cocktail",
             "Hijos": []
           },
           {
             "etiqueta": "Producto",
-            "Path": "/producto",
+            "Path": "/productoA",
             "icon": "mdi-package-variant",
             "Hijos": []
           },
           {
             "etiqueta": "Proveedor",
-            "Path": "/proveedor",
+            "Path": "/proveedorA",
             "icon": "mdi-truck",
             "Hijos": []
           },
           {
             "etiqueta": "Inventario",
-            "Path": "/inventario",
+            "Path": "/inventarioA",
             "icon": "mdi-clipboard-list",
             "Hijos": []
           }
@@ -83,43 +83,43 @@ export const EstructuraMenu = {
           },
           {
             "etiqueta": "Clientes",
-            "Path": "/clientes",
+            "Path": "/clienteB",
             "icon": "mdi-account",
             "Hijos": []
           },
           {
             "etiqueta": "Empleados",
-            "Path": "/empleados",
+            "Path": "/empleadoB",
             "icon": "mdi-account-group",
             "Hijos": []
           },
           {
             "etiqueta": "Ventas",
-            "Path": "/ventas",
+            "Path": "/ventasB",
             "icon": "mdi-cart",
             "Hijos": []
           },
           {
             "etiqueta": "Cocteleria",
-            "Path": "/cocteleria",
+            "Path": "/cocteleriaB",
             "icon": "mdi-glass-cocktail",
             "Hijos": []
           },
           {
             "etiqueta": "Producto",
-            "Path": "/producto",
+            "Path": "/productoB",
             "icon": "mdi-package-variant",
             "Hijos": []
           },
           {
             "etiqueta": "Proveedor",
-            "Path": "/proveedor",
+            "Path": "/proveedorB",
             "icon": "mdi-truck",
             "Hijos": []
           },
           {
             "etiqueta": "Inventario",
-            "Path": "/inventario",
+            "Path": "/inventarioB",
             "icon": "mdi-clipboard-list",
             "Hijos": []
           }

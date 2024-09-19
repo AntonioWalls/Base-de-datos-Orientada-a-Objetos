@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
+import { EstructuraCoctelerias } from "../../../../../constants/EstructuraTabla"; 
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { listarCocteleria, eliminarCocteleria } from '../../../../../redux/actions/actionCocteleriaB'; 
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -13,22 +13,33 @@ const ordenamientoInicial = [
   }
 ];
 
-const TablaEmpleados = ({ mostrarFormulario }) => {
+const TablaCocteleria = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  
+  // Obtener cocteles del store de Redux
+  const cocteles = useSelector((state) => state.getCocteleriaB.cocteles?.response || []);
+  
   const [dataState, setDataState] = useState([]);
 
+  // Dispatch de la acción para listar los cocteles al cargar el componente
   useEffect(() => {
-    dispatch(listarEmpleado());
+    dispatch(listarCocteleria());
   }, [dispatch]);
 
+  // Solo actualizar el estado si cocteles ha cambiado
   useEffect(() => {
-    setDataState(empleados);
-  }, [empleados]);
+    if (cocteles.length) {  // Verificar si hay datos antes de mapear
+      const mappedData = cocteles.map((item) => ({
+        ...item,
+        id: item.id_coct,  // Asignar el id_coct como la clave
+      }));
+      setDataState(mappedData);
+    }
+  }, [cocteles]); // Solo se ejecuta cuando `cocteles` cambia
 
-  // Función para eliminar la sucursal seleccionada
-  const handleEliminar = (idEmpleado) => {
+  // Función para eliminar un coctel
+  const handleEliminar = (id_coct) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -38,18 +49,18 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(eliminarEmpleado(idEmpleado)).then((response) => {
+        dispatch(eliminarCocteleria(id_coct)).then((response) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El empleado ha sido eliminado.",
+              text: "El coctel ha sido eliminado.",
               icon: "success"
             });
-            dispatch(listarEmpleado()); // Recargar las sucursales después de eliminar
+            dispatch(listarCocteleria()); // Recargar los cocteles después de eliminar
           } else {
             Swal.fire({
               title: "Error",
-              text: "No se pudo eliminar el empleado.",
+              text: "No se pudo eliminar el coctel.",
               icon: "error"
             });
           }
@@ -58,10 +69,12 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
     });
   };
 
-  const handleEditar = (idEmpleado) => {
-    mostrarFormulario(true, idEmpleado);
+  // Función para editar un coctel
+  const handleEditar = (id_coct) => {
+    mostrarFormulario(true, id_coct);
   };
 
+  // Función para crear un nuevo coctel
   const handleNuevo = () => {
     mostrarFormulario(false);
   };
@@ -69,7 +82,7 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   return (
     dataState && (
       <TablaKendo
-        estructuraTabla={EstructuraEmpleados}
+        estructuraTabla={EstructuraCoctelerias} 
         funcionEditar={handleEditar}
         funcionNuevo={handleNuevo}
         funcionEliminar={handleEliminar}
@@ -80,4 +93,5 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   );
 };
 
-export default TablaEmpleados;
+export default TablaCocteleria;
+

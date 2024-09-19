@@ -17,7 +17,7 @@ const Ventas = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/venta');
+    navigate('/ventasB');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdVenta(null); // Resetear ID
@@ -27,7 +27,7 @@ const Ventas = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdVenta(idVenta);
-    navigate('/venta/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/ventasB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (
@@ -44,4 +44,4 @@ const Ventas = () => {
   );
 };
 
-export default Sucursales;
+export default Ventas;

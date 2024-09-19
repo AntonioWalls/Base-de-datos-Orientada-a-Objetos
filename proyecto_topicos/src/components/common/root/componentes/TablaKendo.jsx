@@ -49,9 +49,9 @@ const TablaKendo = (
     const handleAction = (actionType, id) => {
         console.log(`ID ${actionType}:`, id); // Imprime la ID en consola
         if (actionType === 'editar') {
-            funcionEditar(id);
+            funcionEditar(id); // id es el campo genérico
         } else if (actionType === 'eliminar') {
-            funcionEliminar(id);
+            funcionEliminar(id); // id es el campo genérico
         }
     };
 
@@ -80,7 +80,6 @@ const TablaKendo = (
                             accion={() => funcionNuevo()}
                         />
                     : null }
-                    {/* Removed Export Buttons */}
                 </GridToolbar>
 
                 {estructuraTabla.columns.map((item) => (
@@ -92,19 +91,18 @@ const TablaKendo = (
                         <td style={style.acciones}>
                             { verModificar ? 
                                 <BotonEditar
-                                    accion={() => handleAction('editar', dataItem.idSucursal)} // Usa la función general
+                                    accion={() => handleAction('editar', dataItem.id)} // Se usa el campo id genérico
                                 />
                             : null }
                             
                             { verEliminar ? 
                                 <BotonEliminar 
-                                    accion={() => handleAction('eliminar', dataItem.idSucursal)}  // Usa la función general
+                                    accion={() => handleAction('eliminar', dataItem.id)}  // Se usa el campo id genérico
                                 />
                             : null }
                         </td>
                     )}/>
                 : null}
-
             </Grid>
         </>
     );

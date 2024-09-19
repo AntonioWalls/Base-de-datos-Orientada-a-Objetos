@@ -6,10 +6,9 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 // Importa las acciones relacionadas con empleados y sucursales
-import { obtenerEmpleado, editarEmpleado } from '../../../../../redux/actions/actionEmpleado';
-import { obtenerSucursales } from '../../../../../redux/actions/actionSucursalB';
+import { obtenerEmpleado, editarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { obtenerSucursal } from '../../../../../redux/actions/actionSucursalB';
 import InputField from '../../../../common/root/componentes/Input';
-import SelectField from '../../../../common/root/componentes/Select'; // Asegúrate de tener este componente
 
 const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
     const dispatch = useDispatch();
@@ -54,7 +53,7 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
 
     useEffect(() => {
         // Cargar las sucursales cuando el componente se monta
-        dispatch(obtenerSucursales())
+        dispatch(obtenerSucursal())
             .then((response) => {
                 setSucursales(response.payload.response || []);
             });
@@ -330,17 +329,27 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
                         />
                     </Col>
 
+                    {/* Campo para seleccionar la sucursal */}
                     <Col md={12}>
-                        <SelectField
-                            controlId="id_sucursal"
-                            label="Sucursal:"
-                            name="id_sucursal"
-                            formik={formik}
-                            options={sucursales.map(sucursal => ({
-                                value: sucursal.idSucursal,
-                                label: sucursal.razSoc
-                            }))}
-                        />
+                        <Form.Group controlId="id_sucursal">
+                            <Form.Label>Sucursal:</Form.Label>
+                            <Form.Control
+                                as="select"
+                                name="id_sucursal"
+                                value={formik.values.id_sucursal}
+                                onChange={formik.handleChange}
+                            >
+                                <option value="">Selecciona una sucursal</option>
+                                {sucursales.map((sucursal) => (
+                                    <option key={sucursal.id} value={sucursal.id}>
+                                        {sucursal.raz_soc}
+                                    </option>
+                                ))}
+                            </Form.Control>
+                            {formik.errors.id_sucursal && formik.touched.id_sucursal ? (
+                                <div className="text-danger">{formik.errors.id_sucursal}</div>
+                            ) : null}
+                        </Form.Group>
                     </Col>
 
                     <Col md={12} style={{ paddingTop: "10px" }}>

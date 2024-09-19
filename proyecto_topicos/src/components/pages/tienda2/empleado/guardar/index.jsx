@@ -1,11 +1,12 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useEffect } from 'react'; // Importa useEffect junto con React
+import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-import { agregarEmpleado } from '../../../../../redux/actions/actionEmpleado';
+import { agregarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
 import { listarSucursal } from '../../../../../redux/actions/actionSucursalB';
 import InputField from '../../../../common/root/componentes/Input';
 

@@ -17,7 +17,7 @@ const Sucursales = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/sucursal');
+    navigate('/sucursalB');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdSucursal(null); // Resetear ID
@@ -27,7 +27,7 @@ const Sucursales = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdSucursal(idSucursal);
-    navigate('/sucursal/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/sucursalB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (

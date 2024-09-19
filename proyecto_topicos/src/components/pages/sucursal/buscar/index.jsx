@@ -16,15 +16,21 @@ const ordenamientoInicial = [
 const TablaSucursales = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const sucursales = useSelector((state) => state.getSucursal.sucursales?.response || []);
+  const sucursales = useSelector((state) => state.getSucursalB.sucursales?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
     dispatch(listarSucursal());
   }, [dispatch]);
 
+  // Mapeo de datos con id genérico
   useEffect(() => {
-    setDataState(sucursales);
+    console.log("Datos recibidos de la API:", sucursales);
+    const mappedData = sucursales.map((item) => ({
+      ...item,
+      id: item.idSucursal || item.idProv || item.idOtraEntidad, // Mapeo de id genérico
+    }));
+    setDataState(mappedData);
   }, [sucursales]);
 
   // Función para eliminar la sucursal seleccionada

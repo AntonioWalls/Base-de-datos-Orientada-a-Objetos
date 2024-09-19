@@ -5,6 +5,7 @@ using API_AntonioWalls.Models_Instancia1;
 using AutoMapper;
 using API_AntonioWalls.Mappings;
 using Microsoft.Extensions.DependencyInjection;
+using API_AntonioWalls.Models_Instancia2;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfile2).Assembly);
 
 builder.Services.AddDbContext<LinkedServerContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL")));
 builder.Services.AddDbContext<Sucursal1Context>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL2")));
+builder.Services.AddDbContext<Sucursal2Context>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL3")));
+
 
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {

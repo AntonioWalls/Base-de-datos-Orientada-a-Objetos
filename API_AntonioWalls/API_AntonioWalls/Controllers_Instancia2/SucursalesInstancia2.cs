@@ -1,21 +1,24 @@
-﻿using API_AntonioWalls.Models_Instancia1;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using API_AntonioWalls.DTOsucursal1;
-using API_AntonioWalls.DTO;
-namespace API_AntonioWalls.Controllers_Instancia1
+using Microsoft.EntityFrameworkCore;
+using API_AntonioWalls.Models_Instancia2;
+using AutoMapper;
+using API_AntonioWalls.Mappings;
+using API_AntonioWalls.DTOsucursal2;
+
+namespace API_AntonioWalls.Controllers_Instancia2
 {
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class SucursalesInstancia1 : ControllerBase
+    public class SucursalesInstancia2 : ControllerBase
     {
-        public readonly Sucursal1Context sucursal1Context;
+        public readonly Sucursal2Context sucursal2Context;
 
-        public SucursalesInstancia1(Sucursal1Context context)
+        public SucursalesInstancia2(Sucursal2Context context)
         {
-            sucursal1Context = context;
+            sucursal2Context = context;
         }
 
         //Muestra una lista de todas las sucursales creadas en la instancia AntonioWalls
@@ -26,8 +29,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
             try
             {
                 // Mapeamos las entidades a DTOs para controlar las propiedades que se devuelven
-                var sucursalesDTOs = sucursal1Context.Sucursales
-                    .Select(s => new SucursalesDTO
+                var sucursalesDTOs = sucursal2Context.Sucursales
+                    .Select(s => new DTOSucursales2
                     {
                         IdSucursal = s.IdSucursal,
                         RazSoc = s.RazSoc,
@@ -65,7 +68,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
             try
             {
                 // Buscamos la sucursal en la base de datos
-                var sucursal = sucursal1Context.Sucursales 
+                var sucursal = sucursal2Context.Sucursales 
                     .Where(i => i.IdSucursal == idSucursal)
                     .FirstOrDefault();
 
@@ -76,7 +79,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
                 }
 
                 // Mapeo manual de la entidad Sucursales a SucursalesDTO
-                var sucursalDTO = new SucursalesDTO
+                var sucursalDTO = new DTOSucursales2
                 {
                     IdSucursal = sucursal.IdSucursal,
                     RazSoc = sucursal.RazSoc,
@@ -109,7 +112,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
         //Guarda una nueva sucursal
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] DTOSucursales newSucursal)
+        public IActionResult Guardar([FromBody] DTOSucursales2 newSucursal)
         {
             try
             {
@@ -130,8 +133,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
                     Correo = newSucursal.Correo,
                     FechaAp = newSucursal.FechaAp,
                 };
-                sucursal1Context.Sucursales.Add(objeto);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Sucursales.Add(objeto);
+                sucursal2Context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }
@@ -144,9 +147,9 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] DTOSucursales newSucursal)
+        public IActionResult Editar([FromBody] DTOSucursales2 newSucursal)
         {
-            Sucursales sucursales = sucursal1Context.Sucursales.Find(newSucursal.IdSucursal);
+            Sucursales sucursales = sucursal2Context.Sucursales.Find(newSucursal.IdSucursal);
             if (sucursales == null)
             {
                 return BadRequest("La Sucursal no ha sido encontrada, no es posible editar");
@@ -168,8 +171,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
                 sucursales.FechaAp = newSucursal.FechaAp is null ? sucursales.FechaAp : newSucursal.FechaAp;
 
 
-                sucursal1Context.Sucursales.Update(sucursales);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Sucursales.Update(sucursales);
+                sucursal2Context.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }
             catch (Exception ex)
@@ -182,7 +185,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
         [Route("Eliminar")]
         public IActionResult Eliminar(int idSucursal)
         {
-            Sucursales sucursales = sucursal1Context.Sucursales.Find(idSucursal);
+            Sucursales sucursales = sucursal2Context.Sucursales.Find(idSucursal);
 
             if (sucursales == null)
             {
@@ -191,8 +194,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
             try
             {
-                sucursal1Context.Sucursales.Remove(sucursales);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Sucursales.Remove(sucursales);
+                sucursal2Context.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
 
             }

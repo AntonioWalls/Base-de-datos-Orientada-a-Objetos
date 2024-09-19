@@ -39,7 +39,7 @@ namespace API_AntonioWalls.Controllers_Instancia2
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOCocteleria>() });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOCocteleria2>() });
             }
         }
 

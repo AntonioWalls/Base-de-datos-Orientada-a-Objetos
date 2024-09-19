@@ -17,7 +17,7 @@ const Clientes = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/cliente');
+    navigate('/clienteB');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdCliente(null); // Resetear ID
@@ -27,7 +27,7 @@ const Clientes = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdCliente(idCliente);
-    navigate('/cliente/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/clienteB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (

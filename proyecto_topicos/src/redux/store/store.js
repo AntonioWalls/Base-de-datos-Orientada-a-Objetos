@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { getClienteAReducer } from "../slice/sliceClienteA";
 import { getClienteBReducer } from "../slice/sliceClienteB";
 import { getCocteleriaAReducer } from "../slice/sliceCocteleriaA";
+import { getCocteleriaBReducer } from "../slice/sliceCocteleriaB";
 import { getEmpleadoAReducer } from "../slice/sliceEmpleadoA";
 import { getEmpleadoBReducer } from "../slice/sliceEmpleadoB";
 import { getInventarioAReducer } from "../slice/sliceInventarioA";
@@ -20,6 +21,7 @@ export default configureStore({
     getClienteA: getClienteAReducer,
     getClienteB: getClienteBReducer,
     getCocteleriaA: getCocteleriaAReducer,
+    getCocteleriaB: getCocteleriaBReducer,
     getEmpleadoA: getEmpleadoAReducer,
     getEmpleadoB: getEmpleadoBReducer,
     getInventarioA: getInventarioAReducer,

@@ -1,21 +1,24 @@
-﻿using API_AntonioWalls.DTOsucursal1;
-using API_AntonioWalls.Models_Instancia1;
-using AutoMapper;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using API_AntonioWalls.Models_Instancia2;
+using AutoMapper;
+using API_AntonioWalls.Mappings;
+using API_AntonioWalls.DTOsucursal2;
 
-namespace API_AntonioWalls.Controllers_Instancia1
+namespace API_AntonioWalls.Controllers_Instancia2
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProveedoresInstancia1 : ControllerBase
+    public class ProveedoresInstancia2 : ControllerBase
     {
-        public readonly Sucursal1Context sucursal1Context;
+        public readonly Sucursal2Context sucursal2Context;
         public readonly IMapper _mapper;
 
-        public ProveedoresInstancia1(Sucursal1Context context, IMapper mapper)
+        public ProveedoresInstancia2(Sucursal2Context context, IMapper mapper)
         {
-            sucursal1Context = context;
+            sucursal2Context = context;
             _mapper = mapper;
         }
 
@@ -25,23 +28,23 @@ namespace API_AntonioWalls.Controllers_Instancia1
         {
             try
             {
-                var proveedoresInstancia1s = sucursal1Context.Proveedores.ToList();
-                List<DTOProveedores> proveedoresDtos = null;
+                var proveedoresInstancia1s = sucursal2Context.Proveedores.ToList();
+                List<DTOProveedores2> proveedoresDtos = null;
 
                 try
                 {
-                    proveedoresDtos = _mapper.Map<List<DTOProveedores>>(proveedoresInstancia1s);
+                    proveedoresDtos = _mapper.Map<List<DTOProveedores2>>(proveedoresInstancia1s);
                 }
                 catch (AutoMapperMappingException ex)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOProveedores>() });
+                    return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOProveedores2>() });
                 }
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = proveedoresDtos });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOProveedores>() });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, response = new List<DTOProveedores2>() });
             }
         }
 
@@ -53,14 +56,14 @@ namespace API_AntonioWalls.Controllers_Instancia1
             {
 
 
-                var proveedor = sucursal1Context.Proveedores.Where(i => i.IdProv == idProveedor).FirstOrDefault();
+                var proveedor = sucursal2Context.Proveedores.Where(i => i.IdProv == idProveedor).FirstOrDefault();
 
                 if (proveedor == null)
                 {
                     return BadRequest("Proveedor no encontrado");
                 }
 
-                var dtoProveedor = _mapper.Map<DTOProveedores>(proveedor);
+                var dtoProveedor = _mapper.Map<DTOProveedores2>(proveedor);
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = dtoProveedor });
             }
             catch (Exception ex)
@@ -70,14 +73,14 @@ namespace API_AntonioWalls.Controllers_Instancia1
         }
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] DTOProveedores newProveedor)
+        public IActionResult Guardar([FromBody] DTOProveedores2 newProveedor)
         {
             try
             {
                 var proveedor = _mapper.Map<Proveedores>(newProveedor);
 
-                sucursal1Context.Proveedores.Add(proveedor);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Proveedores.Add(proveedor);
+                sucursal2Context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
 
@@ -90,9 +93,9 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] DTOProveedores newProveedor)
+        public IActionResult Editar([FromBody] DTOProveedores2 newProveedor)
         {
-            var proveedor = sucursal1Context.Proveedores.Find(newProveedor.IdProv);
+            var proveedor = sucursal2Context.Proveedores.Find(newProveedor.IdProv);
             if (proveedor == null)
             {
                 return BadRequest("El proveedor no ha sido encontrado, no es posible editar");
@@ -103,8 +106,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
                 // Solo actualiza los campos que no sean nulos
                 _mapper.Map(newProveedor, proveedor);
 
-                sucursal1Context.Proveedores.Update(proveedor);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Proveedores.Update(proveedor);
+                sucursal2Context.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }
             catch (Exception ex)
@@ -118,7 +121,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
         [Route("Eliminar")]
         public IActionResult Eliminar(int idProveedor)
         {
-            var proveedor = sucursal1Context.Proveedores.Find(idProveedor);
+            var proveedor = sucursal2Context.Proveedores.Find(idProveedor);
 
             if (proveedor == null)
             {
@@ -127,8 +130,8 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
             try
             {
-                sucursal1Context.Proveedores.Remove(proveedor);
-                sucursal1Context.SaveChanges();
+                sucursal2Context.Proveedores.Remove(proveedor);
+                sucursal2Context.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
             }
             catch (Exception ex)

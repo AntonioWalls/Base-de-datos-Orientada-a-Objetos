@@ -82,7 +82,7 @@ export const EstructuraSucursales = {
       { field: "mezcla", key: "mezcla", title: "Mezcla"},
       { field: "prec_vent", key: "prec_vent", title: "Precio Venta" },
     ],
-    exportName: "Productos",
+    exportName: "COCTELERIAS",
     paperSize: "A4",
     margin: "1cm"
   };

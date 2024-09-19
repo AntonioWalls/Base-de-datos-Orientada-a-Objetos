@@ -11,7 +11,7 @@ import InputField from '../../../../common/root/componentes/Input';
 
 const ModificarProveedor = ({ onCancel, idProveedor }) => {
     const dispatch = useDispatch();
-    const [sucursal, setSucursal] = useState(null);
+    const [proveedor, setProveedor] = useState(null);
 
     useEffect(() => {
         console.log('ID recibida:', idProveedor); // Imprime la ID del proveedor en consola
@@ -38,7 +38,7 @@ const ModificarProveedor = ({ onCancel, idProveedor }) => {
                     });
                 });
         }
-    }, [dispatch, idProv]);
+    }, [dispatch, idProveedor]);
 
     const initialValues = {
         idProv: '',         // Nuevo campo

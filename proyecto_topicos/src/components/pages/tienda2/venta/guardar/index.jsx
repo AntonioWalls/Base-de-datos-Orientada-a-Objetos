@@ -1,6 +1,7 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useEffect } from 'react'; // Importa useEffect junto con React
+import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
@@ -46,6 +47,7 @@ const GuardarVenta = ({ onCancel }) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
             values.id_venta = randomId;
+            values.id_sucursal = 2;
             console.log(values);
             dispatch(agregarVenta(values))
                 .then((response) => {
