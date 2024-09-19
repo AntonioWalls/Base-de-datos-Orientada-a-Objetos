@@ -13,6 +13,7 @@ import ClienteB from '../../pages/tienda2/cliente'
 import EmpleadoB from '../../pages/tienda2/empleado'
 import ProveedorB from '../../pages/tienda2/proveedor'
 import CocteleriaB from '../../pages/tienda2/cocteleria'
+import ProductoB from '../../pages/tienda2/producto'
 
 const Root = () => {
   loadMessages(mensajesKendo, 'es');
@@ -37,6 +38,8 @@ const Root = () => {
             <Route path="proveedorB/guardar" element={<ProveedorB />} />
             <Route path="cocteleriaB" element={<CocteleriaB />} />
             <Route path="cocteleriaB/guardar" element={<CocteleriaB />} />
+            <Route path="productoB" element={<ProductoB />} />
+            <Route path="productoB/guardar" element={<ProductoB />} />
           </Route>
         </Routes>
       </BrowserRouter>

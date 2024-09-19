@@ -5,6 +5,7 @@ import VentaB from "../components/pages/tienda2/venta"
 import ClienteB from '../../pages/tienda2/cliente'
 import EmpleadoB from '../../pages/tienda2/empleado'
 import ProveedorB from '../../pages/tienda2/proveedor'
+import ProductoB from '../../pages/tienda2/producto'
 
 const Routes = [
     {
@@ -58,6 +59,14 @@ const Routes = [
     {
         path: '/ventasB/guardar',
         component: ProveedorB
+    },
+    {
+        path: '/productoB',
+        component: ProductoB
+    },
+    {
+        path: '/productoB/guardar',
+        component: ProductoB
     },
 ];
 export default Routes;
