@@ -16,16 +16,26 @@ const ordenamientoInicial = [
 const TablaEmpleados = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  const empleados = useSelector((state) => state.getEmpleadosB.empleados?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
     dispatch(listarEmpleado());
   }, [dispatch]);
 
-  useEffect(() => {
-    setDataState(empleados);
+  // Mapeo de datos con id genérico
+  const mappedData = React.useMemo(() => {
+    return empleados.map((item) => ({
+      ...item,
+      id: item.idSucursal || item.idProv || item.idEmpleado,
+    }));
   }, [empleados]);
+  
+  useEffect(() => {
+    setDataState(mappedData);
+  }, [mappedData]);
+  
+  
 
   // Función para eliminar la sucursal seleccionada
   const handleEliminar = (idEmpleado) => {
@@ -42,10 +52,10 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El empleado ha sido eliminado.",
+              text: "El empleado ha sido eliminada.",
               icon: "success"
             });
-            dispatch(listarEmpleado()); // Recargar las sucursales después de eliminar
+            dispatch(listarEmpleado()); 
           } else {
             Swal.fire({
               title: "Error",
