@@ -1,46 +1,55 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import React, { useEffect } from 'react'; // Importa useEffect junto con React
-import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
+import React from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 import { agregarCliente } from '../../../../../redux/actions/actionClienteB';
-import { listarSucursal } from '../../../../../redux/actions/actionSucursalB';
 import InputField from '../../../../common/root/componentes/Input';
 
 const GuardarCliente = ({ onCancel }) => {
     const dispatch = useDispatch();
-    const { sucursales = [] } = useSelector(state => state.listarSucursal || {});
-    
+
     // Valores iniciales del formulario
     const initialValues = {
-        idCliente: '',    // INT NOT NULL
-        nomP: '',         // VARCHAR(30)
-        apP: '',          // VARCHAR(30)
-        apM: '',          // VARCHAR(30)
-        calle: '',        // VARCHAR(50)
-        num: '',          // INT
-        col: '',          // VARCHAR(50)
-        ciudad: '',       // VARCHAR(30)
-        estado: '',       // VARCHAR(30)
-        pais: '',         // VARCHAR(30)
-        cp: '',           // INT
-        correo: '',       // VARCHAR(50)
-        telefono: '',     // VARCHAR(10)
-        rfc: '',          // VARCHAR(13)
-        fechaReg: '',     // DATE
-        idSucursal: ''     // Fijo a 2
+        idCliente: '',
+        nomP: '',
+        apP: '',
+        apM: '',
+        calle: '',
+        num: '',
+        col: '',
+        ciudad: '',
+        estado: '',
+        cp: '',
+        correo: '',
+        telefono: '',
+        rfc: '',
+        fechaReg: '',
+        idSucursal: '',
     };
 
-    useEffect(() => {
-        dispatch(listarSucursal());
-    }, [dispatch]);
-
+    const validationSchema = Yup.object({
+        nomP: Yup.string().required('Es requerido'),
+        apP: Yup.string().required('Es requerido'),
+        apM: Yup.string().required('Es requerido'),
+        calle: Yup.string().required('Es requerido'),
+        num: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+        col: Yup.string().required('Es requerido'),
+        ciudad: Yup.string().required('Es requerido'),
+        estado: Yup.string().required('Es requerido'),
+        pais: Yup.string().required('Es requerido'),
+        cp: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+        correo: Yup.string().email('Email inválido').required('Es requerido'),
+        telefono: Yup.string().required('Es requerido'),
+        rfc: Yup.string().required('Es requerido'),
+        fechaReg: Yup.date().required('Es requerido'),
+    });
 
     const formik = useFormik({
         initialValues: initialValues,
+        validationSchema: validationSchema,
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
@@ -75,11 +84,12 @@ const GuardarCliente = ({ onCancel }) => {
     }
 
     return (
-        <Container className="d-flex justify-content-center">
+        <Container className='d-flex justify-content-center'>
             <Row>
-                <h2>Nuevo Cliente</h2>
+                <h2>
+                    Nuevo Cliente
+                </h2>
                 <Form onSubmit={formik.handleSubmit}>
-                    {/* Campos de cliente */}
                     <Col md={12}>
                         <InputField
                             controlId="nomP"
@@ -182,16 +192,6 @@ const GuardarCliente = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="correo"
-                            label="Correo:"
-                            type="email"
-                            name="correo"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
                             controlId="telefono"
                             label="Teléfono:"
                             type="text"
@@ -212,37 +212,22 @@ const GuardarCliente = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
+                            controlId="correo"
+                            label="Correo:"
+                            type="email"
+                            name="correo"
+                            formik={formik}
+                        />
+                    </Col>
+
+                    <Col md={12}>
+                        <InputField
                             controlId="fechaReg"
                             label="Fecha de Registro:"
                             type="date"
                             name="fechaReg"
                             formik={formik}
                         />
-                    </Col>
-
-                    {/* Campo para seleccionar la sucursal */}
-                    <Col md={12}>
-                        <Form.Group controlId="id_sucursal">
-                            <Form.Label>Sucursal:</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="id_sucursal"
-                                value={formik.values.idSucursal}
-                                onChange={(e) => {
-                                    formik.setFieldValue('id_sucursal', 2); // Forzar el valor de id_sucursal a 2
-                                }}
-                            >
-                                <option value="">Selecciona una sucursal</option>
-                                {sucursales.map((sucursal) => (
-                                    <option key={sucursal.response.id} value={sucursal.response.id}>
-                                        {sucursal.response.razSoc}
-                                    </option>
-                                ))}
-                            </Form.Control>
-                            {formik.errors.id_sucursal && formik.touched.id_sucursal ? (
-                                <div className="text-danger">{formik.errors.id_sucursal}</div>
-                            ) : null}
-                        </Form.Group>
                     </Col>
 
                     <Col md={12} style={{ paddingTop: "10px" }}>
@@ -262,6 +247,7 @@ const GuardarCliente = ({ onCancel }) => {
                         </div>
                     </Col>
                 </Form>
+
             </Row>
         </Container>
     );

@@ -34,7 +34,7 @@ const Clientes = () => {
     <Element>
       {mostrarFormulario ? 
         (esEditar ? 
-          <ModificarCliente onCancel={mostrarTabla} id_Cliente={idCliente} /> 
+          <ModificarCliente onCancel={mostrarTabla} idCliente={idCliente} /> 
         : 
           <GuardarCliente onCancel={mostrarTabla} /> 
         ) : (

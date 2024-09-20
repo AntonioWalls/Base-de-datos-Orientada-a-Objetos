@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaClientes = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const clientes = useSelector((state) => state.getClienteB.clientes?.response || []);
+  const clientes = useSelector((state) => state.getClientesB.clientes?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
@@ -24,18 +24,14 @@ const TablaClientes = ({ mostrarFormulario }) => {
   }, [dispatch]);
 
   // Mapeo de datos con id genérico
-  const mappedData = React.useMemo(() => {
-    return clientes.map((item) => ({
-      ...item,
-      id: item.idSucursal || item.idProv || item.idCliente, 
-    }));
-  }, [clientes]);
-  
   useEffect(() => {
+    console.log("Datos recibidos de la API:", clientes);
+    const mappedData = clientes.map((item) => ({
+      ...item,
+      id: item.idSucursal || item.idProv || item.idCliente, // Mapeo de id genérico
+    }));
     setDataState(mappedData);
-  }, [mappedData]);
-  
-  
+  }, [clientes]);
 
   // Función para eliminar la sucursal seleccionada
   const handleEliminar = (idCliente) => {
@@ -55,7 +51,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
               text: "El cliente ha sido eliminada.",
               icon: "success"
             });
-            dispatch(listarCliente()); 
+            dispatch(listarCliente()); // Recargar las sucursales después de eliminar
           } else {
             Swal.fire({
               title: "Error",
@@ -69,7 +65,6 @@ const TablaClientes = ({ mostrarFormulario }) => {
   };
 
   const handleEditar = (idCliente) => {
-    console.log('La id es: ', idCliente);
     mostrarFormulario(true, idCliente);
   };
 
