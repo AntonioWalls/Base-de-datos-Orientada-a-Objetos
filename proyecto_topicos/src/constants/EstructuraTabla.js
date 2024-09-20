@@ -13,9 +13,9 @@ export const EstructuraSucursales = {
 
   export const EstructuraClientes = {
     columns: [
-      { field: "nom_p", key: "nom_p", title: "Nombre" },
-      { field: "ap_p", key: "ap_p", title: "Apellido Paterno" },
-      { field: "ap_m", key: "ap_m", title: "Apellido Materno" },
+      { field: "nomP", key: "nomP", title: "Nombre" },
+      { field: "apP", key: "apP", title: "Apellido Paterno" },
+      { field: "apM", key: "apM", title: "Apellido Materno" },
       { field: "telefono", key: "telefono", title: "Telefono" },
       { field: "ciudad", key: "ciudad", title: "Ciudad" },
     ],
@@ -26,12 +26,12 @@ export const EstructuraSucursales = {
 
   export const  EstructuraEmpleados = {
     columns: [
-      { field: "nom_p", key: "nom_p", title: "Nombre" },
-      { field: "ap_p", key: "ap_p", title: "Apellido Paterno" },
-      { field: "ap_m", key: "ap_m", title: "Apellido Materno" },
+      { field: "nomP", key: "nom_p", title: "Nombre" },
+      { field: "apP", key: "apP", title: "Apellido Paterno" },
+      { field: "apM", key: "apM", title: "Apellido Materno" },
       { field: "telefono", key: "telefono", title: "Telefono" },
       { field: "ciudad", key: "ciudad", title: "Ciudad" },
-      { field: "emp_status", key: "emp_status", title: "Estatus" },
+      { field: "empStatus", key: "empStatus", title: "Estatus" },
     ],
     exportName: "Clientes",
     paperSize: "A4",
@@ -40,11 +40,11 @@ export const EstructuraSucursales = {
 
   export const  EstructuraVentas = {
     columns: [
-      { field: "fecha_venta", key: "fecha_venta", title: "Fecha de Venta" },
+      { field: "fechaVenta", key: "fechaVenta", title: "Fecha de Venta" },
       { field: "subtotal", key: "subtotal", title: "Subtotal" },
       { field: "iva", key: "iva", title: "IVA" },
       { field: "total", key: "total", title: "Total" },
-      { field: "met_pago", key: "met_pago", title: "Metodo de Pago" },
+      { field: "metPago", key: "metPago", title: "Metodo de Pago" },
     ],
     exportName: "Ventas",
     paperSize: "A4",
@@ -56,7 +56,7 @@ export const EstructuraSucursales = {
       { field: "razSoc", key: "razSoc", title: "Razon Social" },
       { field: "pais", key: "pais", title: "País" },
       { field: "rfc", key: "rfc", title: "RFC" },
-      { field: "correo_prov", key: "correo_prov", title: "Correo" },
+      { field: "correoProv", key: "correoProv", title: "Correo" },
     ],
     exportName: "Proveedores",
     paperSize: "A4",
@@ -80,9 +80,9 @@ export const EstructuraSucursales = {
       { field: "nombre", key: "nombre", title: "Nombre" },
       { field: "descr", key: "descr", title: "Descripción" },
       { field: "mezcla", key: "mezcla", title: "Mezcla"},
-      { field: "prec_vent", key: "prec_vent", title: "Precio Venta" },
+      { field: "precVent", key: "precVent", title: "Precio Venta" },
     ],
-    exportName: "COCTELERIAS",
+    exportName: "Coctelerias",
     paperSize: "A4",
     margin: "1cm"
   };

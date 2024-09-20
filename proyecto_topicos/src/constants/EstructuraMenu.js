@@ -15,7 +15,7 @@ export const EstructuraMenu = {
     "etiqueta": "Sucursales",
     "items": [
       {
-        "etiqueta": "Sucursal 1",
+        "etiqueta": "Sucursal HMO",
         "Path": "",
         "icon": "mdi mdi-storefront",
         "Hijos": [
@@ -60,18 +60,12 @@ export const EstructuraMenu = {
             "Path": "/proveedorA",
             "icon": "mdi-truck",
             "Hijos": []
-          },
-          {
-            "etiqueta": "Inventario",
-            "Path": "/inventarioA",
-            "icon": "mdi-clipboard-list",
-            "Hijos": []
           }
         ]
       },
       // Aquí se añade la nueva Sucursal 2 con los mismos Hijos
       {
-        "etiqueta": "Sucursal 2",
+        "etiqueta": "Sucursal GYS",
         "Path": "",
         "icon": "mdi mdi-storefront",
         "Hijos": [
@@ -115,12 +109,6 @@ export const EstructuraMenu = {
             "etiqueta": "Proveedor",
             "Path": "/proveedorB",
             "icon": "mdi-truck",
-            "Hijos": []
-          },
-          {
-            "etiqueta": "Inventario",
-            "Path": "/inventarioB",
-            "icon": "mdi-clipboard-list",
             "Hijos": []
           }
         ]
