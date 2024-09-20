@@ -11,21 +11,21 @@ import { agregarCocteleria } from '../../../../../redux/actions/actionCocteleria
 const GuardarCocteleria = ({ onCancel }) => {
     const dispatch = useDispatch();
 
-   // Valores iniciales del formulario
-const initialValues = {
-    id_coct: '', // ID de coctelería
-    nombre: '', // Nombre
-    mezcla: '', // Mezcla
-    descr: '', // Descripción
-    prec_vent: '' // Precio de venta
-};
+    // Valores iniciales del formulario
+    const initialValues = {
+        idCoct: '', // ID de coctelería
+        nombre: '', // Nombre
+        mezcla: '', // Mezcla
+        descr: '', // Descripción
+        precVent: '' // Precio de venta
+    };
 
-const validationSchema = Yup.object({
-    nombre: Yup.string().required('Es requerido'),
-    mezcla: Yup.string().required('Es requerido'),
-    descr: Yup.string().required('Es requerido'),
-    prec_vent: Yup.number().required('Es requerido').positive('Debe ser un número positivo')
-});
+    const validationSchema = Yup.object({
+        nombre: Yup.string().required('Es requerido'),
+        mezcla: Yup.string().required('Es requerido'),
+        descr: Yup.string().required('Es requerido'),
+        precVent: Yup.number().required('Es requerido').positive('Debe ser un número positivo')
+    });
 
 
     const formik = useFormik({
@@ -34,7 +34,7 @@ const validationSchema = Yup.object({
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
-            values.id_coct = randomId;
+            values.idCoct = randomId;
             console.log(values);
             dispatch(agregarCocteleria(values))
                 .then((response) => {
@@ -71,63 +71,63 @@ const validationSchema = Yup.object({
                 </h2>
                 <Form onSubmit={formik.handleSubmit}>
 
-    <Col md={12}>
-        <InputField
-            controlId="nombre"
-            label="Nombre:"
-            type="text"
-            name="nombre"
-            formik={formik}
-        />
-    </Col>
+                    <Col md={12}>
+                        <InputField
+                            controlId="nombre"
+                            label="Nombre:"
+                            type="text"
+                            name="nombre"
+                            formik={formik}
+                        />
+                    </Col>
 
-    <Col md={12}>
-        <InputField
-            controlId="mezcla"
-            label="Mezcla:"
-            type="text"
-            name="mezcla"
-            formik={formik}
-        />
-    </Col>
+                    <Col md={12}>
+                        <InputField
+                            controlId="mezcla"
+                            label="Mezcla:"
+                            type="text"
+                            name="mezcla"
+                            formik={formik}
+                        />
+                    </Col>
 
-    <Col md={12}>
-        <InputField
-            controlId="descr"
-            label="Descripción:"
-            type="text"
-            name="descr"
-            formik={formik}
-        />
-    </Col>
+                    <Col md={12}>
+                        <InputField
+                            controlId="descr"
+                            label="Descripción:"
+                            type="text"
+                            name="descr"
+                            formik={formik}
+                        />
+                    </Col>
 
-    <Col md={12}>
-        <InputField
-            controlId="prec_vent"
-            label="Precio de Venta:"
-            type="number"
-            name="prec_vent"
-            formik={formik}
-        />
-    </Col>
+                    <Col md={12}>
+                        <InputField
+                            controlId="precVent"
+                            label="Precio de Venta:"
+                            type="number"
+                            name="precVent"
+                            formik={formik}
+                        />
+                    </Col>
 
-    <Col md={12} style={{ paddingTop: "10px" }}>
-        <div className="mt-3 d-flex justify-content-end">
-            <Button
-                className='mx-3'
-                variant="danger"
-                onClick={handleCancel}>
-                Cancelar
-            </Button>
-            <Button
-                className=''
-                variant="primary"
-                type="submit">
-                Guardar
-            </Button>
-        </div>
-    </Col>
-</Form>
+                    <Col md={12} style={{ paddingTop: "10px" }}>
+                        <div className="mt-3 d-flex justify-content-end">
+                            <Button
+                                className='mx-3'
+                                variant="danger"
+                                onClick={handleCancel}>
+                                Cancelar
+                            </Button>
+                            <Button
+                                className=''
+                                variant="primary"
+                                type="submit">
+                                Guardar
+                            </Button>
+                        </div>
+                    </Col>
+                </Form>
 
             </Row>
         </Container>

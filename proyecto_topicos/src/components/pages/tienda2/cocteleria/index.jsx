@@ -10,7 +10,7 @@ const Coctelerias = () => {
   const navigate = useNavigate();
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [esEditar, setEsEditar] = useState(false);
-  const [idCocteleria, setIdCocteleria] = useState(null);
+  const [idCoct, setIdCocteleria] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('activeMenu', 'Cocteles');
@@ -23,10 +23,10 @@ const Coctelerias = () => {
     setIdCocteleria(null); // Resetear ID
   };
 
-  const handleFormulario = (esEditar = false, idCocteleria = null) => {
+  const handleFormulario = (esEditar = false, idCoct = null) => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
-    setIdCocteleria(idCocteleria);
+    setIdCocteleria(idCoct);
     navigate('/cocteleriaB/guardar'); // Usar la misma ruta para ambos formularios
   };
 
@@ -34,7 +34,7 @@ const Coctelerias = () => {
     <Element>
       {mostrarFormulario ? 
         (esEditar ? 
-          <ModificarCocteleria onCancel={mostrarTabla} idCocteleria={idCocteleria} /> 
+          <ModificarCocteleria onCancel={mostrarTabla} idCoct={idCoct} /> 
         : 
           <GuardarCocteleria onCancel={mostrarTabla} /> 
         ) : (

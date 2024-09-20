@@ -27,16 +27,17 @@ const TablaCocteleria = ({ mostrarFormulario }) => {
     dispatch(listarCocteleria());
   }, [dispatch]);
 
-  // Solo actualizar el estado si cocteles ha cambiado
+  // Mapeo de datos con id genérico
+  const mappedData = React.useMemo(() => {
+    return cocteles.map((item) => ({
+      ...item,
+      id: item.idSucursal || item.idProv || item.idCoct,
+    }));
+  }, [cocteles]);
+  
   useEffect(() => {
-    if (cocteles.length) {  // Verificar si hay datos antes de mapear
-      const mappedData = cocteles.map((item) => ({
-        ...item,
-        id: item.id_coct,  // Asignar el id_coct como la clave
-      }));
-      setDataState(mappedData);
-    }
-  }, [cocteles]); // Solo se ejecuta cuando `cocteles` cambia
+    setDataState(mappedData);
+  }, [mappedData]);
 
   // Función para eliminar un coctel
   const handleEliminar = (id_coct) => {
@@ -70,8 +71,8 @@ const TablaCocteleria = ({ mostrarFormulario }) => {
   };
 
   // Función para editar un coctel
-  const handleEditar = (id_coct) => {
-    mostrarFormulario(true, id_coct);
+  const handleEditar = (idCoct) => {
+    mostrarFormulario(true, idCoct);
   };
 
   // Función para crear un nuevo coctel
