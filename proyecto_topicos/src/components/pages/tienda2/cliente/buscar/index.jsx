@@ -27,7 +27,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
   const mappedData = React.useMemo(() => {
     return clientes.map((item) => ({
       ...item,
-      id: item.idSucursal || item.idProv || item.idVenta, 
+      id: item.idSucursal || item.idProv || item.idCliente, 
     }));
   }, [clientes]);
   
@@ -69,6 +69,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
   };
 
   const handleEditar = (idCliente) => {
+    console.log('La id es: ', idCliente);
     mostrarFormulario(true, idCliente);
   };
 

@@ -10,40 +10,55 @@ import { obtenerCliente, editarCliente } from '../../../../../redux/actions/acti
 import { listarSucursal } from '../../../../../redux/actions/actionSucursalB';
 import InputField from '../../../../common/root/componentes/Input';
 
-const ModificarCliente = ({ onCancel, idCliente }) => {
+const ModificarCliente = ({ onCancel, id_Cliente }) => {
     const dispatch = useDispatch();
     const [cliente, setCliente] = useState(null);
-    const { sucursales } = useSelector(state => state.listarSucursal); // Lista de sucursales
+    const { sucursales = [] } = useSelector(state => state.listarSucursal || {});
 
     useEffect(() => {
-        if (idCliente) {
-            dispatch(obtenerCliente(idCliente))
-                .then((response) => {
-                    const data = response.payload.response;
-                    setCliente(data);
-                    formik.setValues({
-                        idCliente: data.idCliente || 0,
-                        nomP: data.nomP || 'string',
-                        apP: data.apP || 'string',
-                        apM: data.apM || 'string',
-                        calle: data.calle || 'string',
-                        num: data.num || 0,
-                        col: data.col || 'string',
-                        ciudad: data.ciudad || 'string',
-                        estado: data.estado || 'string',
-                        pais: data.pais || 'string',
-                        cp: data.cp || 0,
-                        correo: data.correo || 'string',
-                        telefono: data.telefono || 'string',
-                        rfc: data.rfc || 'string',
-                        fechaReg: data.fechaReg ? data.fechaReg.split('T')[0] : '2024-09-19T00:00:00',
-                        idSucursal: data.idSucursal || 1
-                    });
-                });
+        if (id_Cliente) {
+            console.log("ID del cliente que se va a obtener:", id_Cliente);
+            dispatch(obtenerCliente(id_Cliente))
+    .then((response) => {
+        console.log("Respuesta del cliente:", response);
+        const data = response.payload.response;
+
+        const formatFecha = (fecha) => {
+            if (fecha) {
+                const date = new Date(fecha);
+                return date.toISOString().split('T')[0];
+            }
+            return '';
+        };
+
+        if (data) {
+            setCliente(data);
+            formik.setValues({
+                idCliente: data.idCliente || 0,
+                nomP: data.nomP || 'string',
+                apP: data.apP || 'string',
+                apM: data.apM || 'string',
+                calle: data.calle || 'string',
+                num: data.num || 0,
+                col: data.col || 'string',
+                ciudad: data.ciudad || 'string',
+                estado: data.estado || 'string',
+                pais: data.pais || 'string',
+                cp: data.cp || 0,
+                correo: data.correo || 'string',
+                telefono: data.telefono || 'string',
+                rfc: data.rfc || 'string',
+                fechaReg: formatFecha(data.fechaReg),
+                idSucursal: data.idSucursal || 1
+            });
+        } else {
+            console.error("No se encontraron datos del cliente.");
+        }
+    });
         }
 
         dispatch(listarSucursal()); // Carga las sucursales disponibles
-    }, [dispatch, idCliente]);
+    }, [dispatch, id_Cliente]);
 
     const formik = useFormik({
         initialValues: {

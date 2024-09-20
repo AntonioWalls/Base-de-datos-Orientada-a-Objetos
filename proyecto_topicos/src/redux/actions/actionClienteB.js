@@ -19,6 +19,7 @@ export const listarCliente = createAsyncThunk(
     async (id, { rejectWithValue }) => {
       try {
         const resp = await axios.get(`http://localhost:12630/api/ClienteInstancia2/Obtener/${id}`);
+        console.log(resp);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);

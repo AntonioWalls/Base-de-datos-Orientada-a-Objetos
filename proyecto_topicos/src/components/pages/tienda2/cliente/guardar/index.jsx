@@ -12,8 +12,8 @@ import InputField from '../../../../common/root/componentes/Input';
 
 const GuardarCliente = ({ onCancel }) => {
     const dispatch = useDispatch();
-    const { sucursales } = useSelector(state => state.listarSucursal);
-
+    const { sucursales = [] } = useSelector(state => state.listarSucursal || {});
+    
     // Valores iniciales del formulario
     const initialValues = {
         idCliente: '',    // INT NOT NULL
@@ -31,38 +31,21 @@ const GuardarCliente = ({ onCancel }) => {
         telefono: '',     // VARCHAR(10)
         rfc: '',          // VARCHAR(13)
         fechaReg: '',     // DATE
-        idSucursal: 2     // Fijo a 2
+        idSucursal: ''     // Fijo a 2
     };
 
     useEffect(() => {
         dispatch(listarSucursal());
     }, [dispatch]);
 
-    const validationSchema = Yup.object({
-        idCliente: Yup.number().required('Es requerido'),  // INT NOT NULL
-        nomP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),  // VARCHAR(30)
-        apP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
-        apM: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
-        calle: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),  // VARCHAR(50)
-        num: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),  // INT
-        col: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),    // VARCHAR(50)
-        ciudad: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'), // VARCHAR(30)
-        estado: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'), // VARCHAR(30)
-        pais: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
-        cp: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),  // INT
-        correo: Yup.string().email('Email inválido').max(50, 'Máximo 50 caracteres').required('Es requerido'), // VARCHAR(50)
-        telefono: Yup.string().length(10, 'Debe tener 10 dígitos').required('Es requerido'), // VARCHAR(10)
-        rfc: Yup.string().length(13, 'Debe tener 13 caracteres').required('Es requerido'),   // VARCHAR(13)
-        fechaReg: Yup.date().required('Es requerido') // DATE
-    });
 
     const formik = useFormik({
         initialValues: initialValues,
-        validationSchema: validationSchema,
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
             values.idCliente = randomId;
+            values.idSucursal = 2;
             console.log(values);
             dispatch(agregarCliente(values))
                 .then((response) => {
@@ -244,15 +227,15 @@ const GuardarCliente = ({ onCancel }) => {
                             <Form.Control
                                 as="select"
                                 name="id_sucursal"
-                                value={formik.values.id_sucursal}
+                                value={formik.values.idSucursal}
                                 onChange={(e) => {
                                     formik.setFieldValue('id_sucursal', 2); // Forzar el valor de id_sucursal a 2
                                 }}
                             >
                                 <option value="">Selecciona una sucursal</option>
                                 {sucursales.map((sucursal) => (
-                                    <option key={sucursal.id} value={sucursal.id}>
-                                        {sucursal.raz_soc}
+                                    <option key={sucursal.response.id} value={sucursal.response.id}>
+                                        {sucursal.response.razSoc}
                                     </option>
                                 ))}
                             </Form.Control>
