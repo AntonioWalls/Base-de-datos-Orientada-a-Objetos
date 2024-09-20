@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { EstructuraClientes } from "../../../../../constants/EstructuraTabla";
-import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarCliente, eliminarCliente } from '../../../../../redux/actions/actionClienteB';
 import Swal from 'sweetalert2';
+
+import { listarCliente, eliminarCliente } from '../../../../redux/actions/actionClienteB';
+import { EstructuraClientes } from "../../../../constants/EstructuraTabla";
+import TablaKendo from "../../../common/root/componentes/TablaKendo";
 import FiltroCliente from './filtro';  // Importa el filtro
 
 const ordenamientoInicial = [
@@ -21,8 +22,9 @@ const TablaClientes = ({ mostrarFormulario }) => {
   const [dataState, setDataState] = useState([]);
   const [filtros, setFiltro] = useState({ Habilitado: true });  // Estado para filtros
 
+  // Efecto para listar los clientes basados en los filtros
   useEffect(() => {
-    dispatch(listarCliente());
+    dispatch(listarCliente(filtros));
   }, [dispatch, filtros]);
 
   // Mapeo de datos con id genérico
@@ -30,12 +32,12 @@ const TablaClientes = ({ mostrarFormulario }) => {
     console.log("Datos recibidos de la API:", clientes);
     const mappedData = clientes.map((item) => ({
       ...item,
-      id: item.idCliente, // Verifica que este ID sea correcto
+      id: item.idCliente,  // Verifica que este ID sea correcto
     }));
     setDataState(mappedData);
   }, [clientes]);
 
-  // Función para eliminar la sucursal seleccionada
+  // Función para eliminar un cliente
   const handleEliminar = (idCliente) => {
     Swal.fire({
       title: "¿Estás seguro?",
@@ -50,10 +52,10 @@ const TablaClientes = ({ mostrarFormulario }) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El cliente ha sido eliminada.",
+              text: "El cliente ha sido eliminado.",
               icon: "success"
             });
-            dispatch(listarCliente()); // Recargar las sucursales después de eliminar
+            dispatch(listarCliente(filtros));  // Recargar los clientes después de eliminar
           } else {
             Swal.fire({
               title: "Error",
@@ -74,6 +76,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
     mostrarFormulario(false);
   };
 
+  // Renderizado del componente
   return (
     dataState && (
       <>

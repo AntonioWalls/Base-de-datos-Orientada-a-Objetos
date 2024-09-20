@@ -26,6 +26,12 @@ export const EstructuraMenu = {
             "Hijos": []
           },
           {
+            "etiqueta": "ClienteYA",
+            "Path": "/cliente",
+            "icon": "mdi mdi-storefront",
+            "Hijos": []
+          },
+          {
             "etiqueta": "Clientes",
             "Path": "/clientesA",
             "icon": "mdi-account",

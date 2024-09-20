@@ -3,6 +3,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { loadMessages } from '@progress/kendo-react-intl';
 import mensajesKendo from '../kendo/es.json';
 
+import Cliente from '../../pages/cliente';
+
 // Componentes
 import App from '../../layout/App/App';
 import Inicio from '../../pages/inicio/Inicio';
@@ -32,7 +34,8 @@ const Root = () => {
           <Route path="/" element={<App />}>
             <Route index element={<Inicio />} />
             <Route path="sucursal" element={<Sucursal />} />
-            <Route path="sucursal/guardar" element={<Sucursal />} />
+            <Route path="cliente" element={<Cliente />} />
+            <Route path="cliente/guardar" element={<Cliente />} />
             <Route path="sucursalB" element={<Sucursal2 />} />
             <Route path="sucursalB/guardar" element={<Sucursal2 />} />
             <Route path="ventasB" element={<VentaB />} />
