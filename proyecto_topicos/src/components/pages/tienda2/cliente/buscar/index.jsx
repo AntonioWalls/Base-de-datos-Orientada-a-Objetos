@@ -23,9 +23,19 @@ const TablaClientes = ({ mostrarFormulario }) => {
     dispatch(listarCliente());
   }, [dispatch]);
 
-  useEffect(() => {
-    setDataState(clientes);
+  // Mapeo de datos con id genérico
+  const mappedData = React.useMemo(() => {
+    return clientes.map((item) => ({
+      ...item,
+      id: item.idSucursal || item.idProv || item.idVenta, 
+    }));
   }, [clientes]);
+  
+  useEffect(() => {
+    setDataState(mappedData);
+  }, [mappedData]);
+  
+  
 
   // Función para eliminar la sucursal seleccionada
   const handleEliminar = (idCliente) => {
@@ -45,7 +55,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
               text: "El cliente ha sido eliminada.",
               icon: "success"
             });
-            dispatch(listarCliente()); // Recargar las sucursales después de eliminar
+            dispatch(listarCliente()); 
           } else {
             Swal.fire({
               title: "Error",

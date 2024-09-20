@@ -22,22 +22,22 @@ const ModificarCliente = ({ onCancel, idCliente }) => {
                     const data = response.payload.response;
                     setCliente(data);
                     formik.setValues({
-                        id_cliente: data.id_cliente || '',
-                        nom_p: data.nom_p || '',
-                        ap_p: data.ap_p || '',
-                        ap_m: data.ap_m || '',
-                        calle: data.calle || '',
-                        num: data.num || '',
-                        col: data.col || '',
-                        ciudad: data.ciudad || '',
-                        estado: data.estado || '',
-                        pais: data.pais || '',
-                        cp: data.cp || '',
-                        correo: data.correo || '',
-                        telefono: data.telefono || '',
-                        rfc: data.rfc || '',
-                        fecha_reg: data.fecha_reg ? data.fecha_reg.split('T')[0] : '',
-                        id_sucursal: data.id_sucursal || ''
+                        idCliente: data.idCliente || 0,
+                        nomP: data.nomP || 'string',
+                        apP: data.apP || 'string',
+                        apM: data.apM || 'string',
+                        calle: data.calle || 'string',
+                        num: data.num || 0,
+                        col: data.col || 'string',
+                        ciudad: data.ciudad || 'string',
+                        estado: data.estado || 'string',
+                        pais: data.pais || 'string',
+                        cp: data.cp || 0,
+                        correo: data.correo || 'string',
+                        telefono: data.telefono || 'string',
+                        rfc: data.rfc || 'string',
+                        fechaReg: data.fechaReg ? data.fechaReg.split('T')[0] : '2024-09-19T00:00:00',
+                        idSucursal: data.idSucursal || 1
                     });
                 });
         }
@@ -47,27 +47,27 @@ const ModificarCliente = ({ onCancel, idCliente }) => {
 
     const formik = useFormik({
         initialValues: {
-            id_cliente: '',
-            nom_p: '',
-            ap_p: '',
-            ap_m: '',
-            calle: '',
-            num: '',
-            col: '',
-            ciudad: '',
-            estado: '',
-            pais: '',
-            cp: '',
-            correo: '',
-            telefono: '',
-            rfc: '',
-            fecha_reg: '',
-            id_sucursal: ''
+            idCliente: 0,
+            nomP: 'string',
+            apP: 'string',
+            apM: 'string',
+            calle: 'string',
+            num: 0,
+            col: 'string',
+            ciudad: 'string',
+            estado: 'string',
+            pais: 'string',
+            cp: 0,
+            correo: 'string',
+            telefono: 'string',
+            rfc: 'string',
+            fechaReg: '2024-09-19T00:00:00',
+            idSucursal: 0
         },
         validationSchema: Yup.object({
-            nom_p: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
-            ap_p: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
-            ap_m: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
+            nomP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
+            apP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
+            apM: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),
             calle: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),
             num: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
             col: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),
@@ -78,8 +78,7 @@ const ModificarCliente = ({ onCancel, idCliente }) => {
             correo: Yup.string().email('Email inválido').max(50, 'Máximo 50 caracteres').required('Es requerido'),
             telefono: Yup.string().length(10, 'Debe tener 10 dígitos').required('Es requerido'),
             rfc: Yup.string().length(13, 'Debe tener 13 caracteres').required('Es requerido'),
-            fecha_reg: Yup.date().required('Es requerido'),
-            id_sucursal: Yup.number().required('Es requerido')
+            fechaReg: Yup.date().required('Es requerido')
         }),
         onSubmit: (values) => {
             dispatch(editarCliente(values))
@@ -115,30 +114,30 @@ const ModificarCliente = ({ onCancel, idCliente }) => {
                 <Form onSubmit={formik.handleSubmit}>
                     <Col md={12}>
                         <InputField
-                            controlId="nom_p"
+                            controlId="nomP"
                             label="Nombre:"
                             type="text"
-                            name="nom_p"
+                            name="nomP"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="ap_p"
+                            controlId="apP"
                             label="Apellido Paterno:"
                             type="text"
-                            name="ap_p"
+                            name="apP"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="ap_m"
+                            controlId="apM"
                             label="Apellido Materno:"
                             type="text"
-                            name="ap_m"
+                            name="apM"
                             formik={formik}
                         />
                     </Col>
@@ -245,33 +244,33 @@ const ModificarCliente = ({ onCancel, idCliente }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="fecha_reg"
+                            controlId="fechaReg"
                             label="Fecha de Registro:"
                             type="date"
-                            name="fecha_reg"
+                            name="fechaReg"
                             formik={formik}
                         />
                     </Col>
 
-                    {/* Campo para seleccionar la sucursal */}
+                    {/* Campo para mostrar la sucursal sin permitir cambios */}
                     <Col md={12}>
-                        <Form.Group controlId="id_sucursal">
+                        <Form.Group controlId="idSucursal">
                             <Form.Label>Sucursal:</Form.Label>
                             <Form.Control
                                 as="select"
-                                name="id_sucursal"
-                                value={formik.values.id_sucursal}
+                                name="idSucursal"
+                                value={formik.values.idSucursal}
                                 onChange={formik.handleChange}
+                                disabled // Deshabilita el campo para evitar cambios
                             >
-                                <option value="">Selecciona una sucursal</option>
                                 {sucursales.map((sucursal) => (
                                     <option key={sucursal.id} value={sucursal.id}>
                                         {sucursal.raz_soc}
                                     </option>
                                 ))}
                             </Form.Control>
-                            {formik.errors.id_sucursal && formik.touched.id_sucursal ? (
-                                <div className="text-danger">{formik.errors.id_sucursal}</div>
+                            {formik.errors.idSucursal && formik.touched.idSucursal ? (
+                                <div className="text-danger">{formik.errors.idSucursal}</div>
                             ) : null}
                         </Form.Group>
                     </Col>

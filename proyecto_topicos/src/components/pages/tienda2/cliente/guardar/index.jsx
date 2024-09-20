@@ -16,22 +16,22 @@ const GuardarCliente = ({ onCancel }) => {
 
     // Valores iniciales del formulario
     const initialValues = {
-        id_cliente: '',    // INT NOT NULL
-        nom_p: '',         // VARCHAR(30)
-        ap_p: '',          // VARCHAR(30)
-        ap_m: '',          // VARCHAR(30)
-        calle: '',         // VARCHAR(50)
-        num: '',           // INT
-        col: '',           // VARCHAR(50)
-        ciudad: '',        // VARCHAR(30)
-        estado: '',        // VARCHAR(30)
-        pais: '',          // VARCHAR(30)
-        cp: '',            // INT
-        correo: '',        // VARCHAR(50)
-        telefono: '',      // VARCHAR(10)
-        rfc: '',           // VARCHAR(13)
-        fecha_reg: '',     // DATE
-        id_sucursal: ''    // INT NOT NULL
+        idCliente: '',    // INT NOT NULL
+        nomP: '',         // VARCHAR(30)
+        apP: '',          // VARCHAR(30)
+        apM: '',          // VARCHAR(30)
+        calle: '',        // VARCHAR(50)
+        num: '',          // INT
+        col: '',          // VARCHAR(50)
+        ciudad: '',       // VARCHAR(30)
+        estado: '',       // VARCHAR(30)
+        pais: '',         // VARCHAR(30)
+        cp: '',           // INT
+        correo: '',       // VARCHAR(50)
+        telefono: '',     // VARCHAR(10)
+        rfc: '',          // VARCHAR(13)
+        fechaReg: '',     // DATE
+        idSucursal: 2     // Fijo a 2
     };
 
     useEffect(() => {
@@ -39,10 +39,10 @@ const GuardarCliente = ({ onCancel }) => {
     }, [dispatch]);
 
     const validationSchema = Yup.object({
-        id_cliente: Yup.number().required('Es requerido'),  // INT NOT NULL
-        nom_p: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),  // VARCHAR(30)
-        ap_p: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
-        ap_m: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
+        idCliente: Yup.number().required('Es requerido'),  // INT NOT NULL
+        nomP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),  // VARCHAR(30)
+        apP: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
+        apM: Yup.string().max(30, 'Máximo 30 caracteres').required('Es requerido'),   // VARCHAR(30)
         calle: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),  // VARCHAR(50)
         num: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),  // INT
         col: Yup.string().max(50, 'Máximo 50 caracteres').required('Es requerido'),    // VARCHAR(50)
@@ -53,10 +53,8 @@ const GuardarCliente = ({ onCancel }) => {
         correo: Yup.string().email('Email inválido').max(50, 'Máximo 50 caracteres').required('Es requerido'), // VARCHAR(50)
         telefono: Yup.string().length(10, 'Debe tener 10 dígitos').required('Es requerido'), // VARCHAR(10)
         rfc: Yup.string().length(13, 'Debe tener 13 caracteres').required('Es requerido'),   // VARCHAR(13)
-        fecha_reg: Yup.date().required('Es requerido'), // DATE
-        id_sucursal: Yup.number().required('Es requerido')  // INT NOT NULL
+        fechaReg: Yup.date().required('Es requerido') // DATE
     });
-
 
     const formik = useFormik({
         initialValues: initialValues,
@@ -64,7 +62,7 @@ const GuardarCliente = ({ onCancel }) => {
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
-            values.id_cliente = randomId;
+            values.idCliente = randomId;
             console.log(values);
             dispatch(agregarCliente(values))
                 .then((response) => {
@@ -101,30 +99,30 @@ const GuardarCliente = ({ onCancel }) => {
                     {/* Campos de cliente */}
                     <Col md={12}>
                         <InputField
-                            controlId="nom_p"
+                            controlId="nomP"
                             label="Nombre:"
                             type="text"
-                            name="nom_p"
+                            name="nomP"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="ap_p"
+                            controlId="apP"
                             label="Apellido Paterno:"
                             type="text"
-                            name="ap_p"
+                            name="apP"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="ap_m"
+                            controlId="apM"
                             label="Apellido Materno:"
                             type="text"
-                            name="ap_m"
+                            name="apM"
                             formik={formik}
                         />
                     </Col>
@@ -231,10 +229,10 @@ const GuardarCliente = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="fecha_reg"
+                            controlId="fechaReg"
                             label="Fecha de Registro:"
                             type="date"
-                            name="fecha_reg"
+                            name="fechaReg"
                             formik={formik}
                         />
                     </Col>
@@ -247,7 +245,9 @@ const GuardarCliente = ({ onCancel }) => {
                                 as="select"
                                 name="id_sucursal"
                                 value={formik.values.id_sucursal}
-                                onChange={formik.handleChange}
+                                onChange={(e) => {
+                                    formik.setFieldValue('id_sucursal', 2); // Forzar el valor de id_sucursal a 2
+                                }}
                             >
                                 <option value="">Selecciona una sucursal</option>
                                 {sucursales.map((sucursal) => (
@@ -281,7 +281,6 @@ const GuardarCliente = ({ onCancel }) => {
                 </Form>
             </Row>
         </Container>
-
     );
 };
 
