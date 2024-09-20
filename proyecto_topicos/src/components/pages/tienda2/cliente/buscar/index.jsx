@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaClientes = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const clientes = useSelector((state) => state.getClientesB.clientes?.response || []);
+  const clientes = useSelector((state) => state.getClienteB.clientes?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const TablaClientes = ({ mostrarFormulario }) => {
     console.log("Datos recibidos de la API:", clientes);
     const mappedData = clientes.map((item) => ({
       ...item,
-      id: item.idSucursal || item.idProv || item.idCliente, // Mapeo de id genérico
+      id: item.idCliente, // Verifica que este ID sea correcto
     }));
     setDataState(mappedData);
   }, [clientes]);
