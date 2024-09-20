@@ -66,9 +66,9 @@ export const EstructuraSucursales = {
   export const EstructuraProductos = {
     columns: [
       { field: "descr", key: "descr", title: "Descripcion" },
-      { field: "cod_barra", key: "cod_barra", title: "Codigo de Barra" },
-      { field: "prec_com", key: "prec_com", title: "Precio Compra" },
-      { field: "prec_ven", key: "prec_ven", title: "Precio Venta" },
+      { field: "codBarra", key: "codBarra", title: "Codigo de Barra" },
+      { field: "precCom", key: "precCom", title: "Precio Compra" },
+      { field: "precVen", key: "precVen", title: "Precio Venta" },
     ],
     exportName: "Productos",
     paperSize: "A4",

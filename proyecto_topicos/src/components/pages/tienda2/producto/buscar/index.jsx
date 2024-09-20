@@ -24,14 +24,18 @@ const TablaProductos = ({ mostrarFormulario }) => {
   }, [dispatch]);
 
   // Mapeo de datos con id genérico
-  useEffect(() => {
-    console.log("Datos recibidos de la API:", productos);
-    const mappedData = productos.map((item) => ({
+  const mappedData = React.useMemo(() => {
+    return productos.map((item) => ({
       ...item,
-      id: item.idSucursal || item.idProv || item.idProducto, // Mapeo de id genérico
+      id: item.idSucursal || item.idProv || item.idProd,
     }));
-    setDataState(mappedData);
   }, [productos]);
+  
+  useEffect(() => {
+    setDataState(mappedData);
+  }, [mappedData]);
+  
+  
 
   // Función para eliminar la sucursal seleccionada
   const handleEliminar = (idProducto) => {

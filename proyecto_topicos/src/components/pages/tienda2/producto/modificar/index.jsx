@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-// Importa las acciones relacionadas con sucursal
+// Importa las acciones relacionadas con productos
 import { obtenerProducto, editarProducto } from '../../../../../redux/actions/actionProductoB';
 import InputField from '../../../../common/root/componentes/Input';
 
@@ -18,47 +18,47 @@ const ModificarProducto = ({ onCancel, idProducto }) => {
         if (idProducto) {
             dispatch(obtenerProducto(idProducto))
                 .then((response) => {
-                    console.log('Producto obtenida:', response.payload); // Imprime la sucursal obtenida en consola
+                    console.log('Producto obtenido:', response.payload); // Imprime el producto obtenido en consola
                     const data = response.payload.response;
 
                     setProducto(data);
                     formik.setValues({
-                        cod_barra: data.cod_barra || '',
-                        prec_com: data.prec_com || '',
-                        prec_ven: data.prec_ven || '',
-                        cant_v: data.cant_v || '',
+                        codBarra: data.codBarra || '',
+                        precCom: data.precCom || '',
+                        precVen: data.precVen || '',
+                        cantV: data.cantV || '',
                         descr: data.descr || '',
-                        cant_ml: data.cant_ml || '',
-                        stock_min: data.stock_min || '',
-                        stock_max: data.stock_max || '',
+                        cantMl: data.cantMl || '',
+                        stockMin: data.stockMin || '',
+                        stockMax: data.stockMax || ''
                     });
                 });
         }
     }, [dispatch, idProducto]);
 
     const initialValues = {
-        id_prod: '',
-        cod_barra: '',
-        prec_com: '',
-        prec_ven: '',
-        cant_v: '',
+        idProd: '',
+        codBarra: '',
+        precCom: '',
+        precVen: '',
+        cantV: '',
         descr: '',
-        cant_ml: '',
-        stock_min: '',
-        stock_max: '',
+        cantMl: '',
+        stockMin: '',
+        stockMax: ''
     };
 
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: Yup.object({
-            cod_barra: Yup.number().required('Es requerido'),
-            prec_com: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-            prec_ven: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-            cant_v: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+            codBarra: Yup.number().required('Es requerido'),
+            precCom: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+            precVen: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+            cantV: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
             descr: Yup.string().required('Es requerido').max(250, 'Debe tener como máximo 250 caracteres'),
-            cant_ml: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
-            stock_min: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
-            stock_max: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+            cantMl: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+            stockMin: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+            stockMax: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
         }),
         onSubmit: (values) => {
             dispatch(editarProducto(values))
@@ -94,40 +94,40 @@ const ModificarProducto = ({ onCancel, idProducto }) => {
                 <Form onSubmit={formik.handleSubmit}>
                     <Col md={12}>
                         <InputField
-                            controlId="cod_barra"
+                            controlId="codBarra"
                             label="Código de Barras:"
                             type="number"
-                            name="cod_barra"
+                            name="codBarra"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="prec_com"
+                            controlId="precCom"
                             label="Precio de Compra:"
                             type="number"
-                            name="prec_com"
+                            name="precCom"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="prec_ven"
+                            controlId="precVen"
                             label="Precio de Venta:"
                             type="number"
-                            name="prec_ven"
+                            name="precVen"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="cant_v"
+                            controlId="cantV"
                             label="Cantidad Vendida:"
                             type="number"
-                            name="cant_v"
+                            name="cantV"
                             formik={formik}
                         />
                     </Col>
@@ -144,30 +144,30 @@ const ModificarProducto = ({ onCancel, idProducto }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="cant_ml"
+                            controlId="cantMl"
                             label="Cantidad en Mililitros:"
                             type="number"
-                            name="cant_ml"
+                            name="cantMl"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="stock_min"
+                            controlId="stockMin"
                             label="Stock Mínimo:"
                             type="number"
-                            name="stock_min"
+                            name="stockMin"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="stock_max"
+                            controlId="stockMax"
                             label="Stock Máximo:"
                             type="number"
-                            name="stock_max"
+                            name="stockMax"
                             formik={formik}
                         />
                     </Col>

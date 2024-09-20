@@ -13,26 +13,28 @@ const GuardarProducto = ({ onCancel }) => {
 
     // Valores iniciales del formulario
     const initialValues = {
-        id_prod: '',
-        cod_barra: '',
-        prec_com: '',
-        prec_ven: '',
-        cant_v: '',
+        idProd: '',
+        codBarra: '',
+        precCom: '',
+        precVen: '',
+        cantV: '',
         descr: '',
-        cant_ml: '',
-        stock_min: '',
-        stock_max: '',
+        cantMl: '',
+        stockMin: '',
+        stockMax: '',
+        idCat: '2',  // Cambiado a idCat
+        idSubcat: '3' // Cambiado a idSubcat
     };
 
     const validationSchema = Yup.object({
-        cod_barra: Yup.number().required('Es requerido'),
-        prec_com: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        prec_ven: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        cant_v: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+        codBarra: Yup.number().required('Es requerido'),
+        precCom: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+        precVen: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+        cantV: Yup.number().required('Es requerido').integer('Debe ser un número entero'), // Cambio en CantV
         descr: Yup.string().required('Es requerido').max(250, 'Debe tener como máximo 250 caracteres'),
-        cant_ml: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
-        stock_min: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
-        stock_max: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+        cantMl: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
+        stockMin: Yup.number().required('Es requerido').integer('Debe ser un número entero'), // Cambio en stockMin
+        stockMax: Yup.number().required('Es requerido').integer('Debe ser un número entero'),
     });
 
     const formik = useFormik({
@@ -41,7 +43,7 @@ const GuardarProducto = ({ onCancel }) => {
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
-            values.id_prod = randomId;
+            values.idProd = randomId;
             console.log(values);
             dispatch(agregarProducto(values))
                 .then((response) => {
@@ -79,40 +81,40 @@ const GuardarProducto = ({ onCancel }) => {
                 <Form onSubmit={formik.handleSubmit}>
                     <Col md={12}>
                         <InputField
-                            controlId="cod_barra"
+                            controlId="codBarra"
                             label="Código de Barras:"
                             type="number"
-                            name="cod_barra"
+                            name="codBarra"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="prec_com"
+                            controlId="precCom"
                             label="Precio de Compra:"
                             type="number"
-                            name="prec_com"
+                            name="precCom"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="prec_ven"
+                            controlId="precVen"
                             label="Precio de Venta:"
                             type="number"
-                            name="prec_ven"
+                            name="precVen"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="cant_v"
+                            controlId="cantV"
                             label="Cantidad Vendida:"
                             type="number"
-                            name="cant_v"
+                            name="cantV"
                             formik={formik}
                         />
                     </Col>
@@ -129,30 +131,30 @@ const GuardarProducto = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="cant_ml"
+                            controlId="cantMl"
                             label="Cantidad en Mililitros:"
                             type="number"
-                            name="cant_ml"
+                            name="cantMl"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="stock_min"
+                            controlId="stockMin"
                             label="Stock Mínimo:"
                             type="number"
-                            name="stock_min"
+                            name="stockMin"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="stock_max"
+                            controlId="stockMax"
                             label="Stock Máximo:"
                             type="number"
-                            name="stock_max"
+                            name="stockMax"
                             formik={formik}
                         />
                     </Col>

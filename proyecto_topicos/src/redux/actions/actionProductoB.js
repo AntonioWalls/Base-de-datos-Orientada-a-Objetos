@@ -7,6 +7,7 @@ export const listarProducto = createAsyncThunk(
     async () => {
       try {
         const resp = await axios.get('http://localhost:12630/api/ProductoInstancia2/Lista');
+        console.log(resp.data);
         return resp.data;
       } catch (error) {
         return null;

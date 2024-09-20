@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tlfNZO4dEfE=",
+  "dgSpecHash": "uYB4ZIkQkY4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\Topicos_BD\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
+  "projectFilePath": "C:\\Users\\Antonio Walls\\Documents\\CRUD_TopicosBD - copia\\TopicosBD2\\API_AntonioWalls\\API_AntonioWalls\\API_AntonioWalls.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Antonio Walls\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Antonio Walls\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
