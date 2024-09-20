@@ -23,6 +23,15 @@ const TablaVentas = ({ mostrarFormulario }) => {
     dispatch(listarVenta());
   }, [dispatch]);
 
+ // Mapeo de datos con id genérico
+ const mappedData = React.useMemo(() => {
+  return ventas.map((item) => ({
+    ...item,
+    id: item.idVenta, // Aquí se asegura que haya un campo `id`
+  }));
+}, [ventas]);
+
+
   useEffect(() => {
     setDataState(ventas);
   }, [ventas]);

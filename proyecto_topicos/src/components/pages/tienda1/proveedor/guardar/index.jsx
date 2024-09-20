@@ -1,23 +1,21 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import React, { useEffect } from 'react'; // Importa useEffect junto con React
-import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
+import React from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-import { agregarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { agregarProveedor } from '../../../../../redux/actions/actionProveedorA';
 import InputField from '../../../../common/root/componentes/Input';
 
-const GuardarEmpleado = ({ onCancel }) => {
+const GuardarProveedor = ({ onCancel }) => {
     const dispatch = useDispatch();
 
     // Valores iniciales del formulario
     const initialValues = {
-        idEmpleado: '',
-        nomP: '',
-        apP: '',
-        apM: '',
+        idProv: '',         // Nuevo campo
+        razSoc: '',
+        rfc: '',
         calle: '',
         num: '',
         col: '',
@@ -25,22 +23,14 @@ const GuardarEmpleado = ({ onCancel }) => {
         estado: '',
         pais: '',
         cp: '',
-        telEmp: '',
-        correoEmp: '',
-        curp: '',
-        rfc: '',
-        nss: '',
-        fechaAlta: '',
-        empStatus: '',
-        puesto: '',
-        sueldo: '',
-        idSucursal: ''
+        telProv: '',        // Nuevo campo
+        correoProv: '',     // Nuevo campo
     };
 
+
     const validationSchema = Yup.object({
-        nomP: Yup.string().required('Es requerido'),
-        apP: Yup.string().required('Es requerido'),
-        apM: Yup.string().required('Es requerido'),
+        razSoc: Yup.string().required('Es requerido'),
+        rfc: Yup.string().required('Es requerido').length(13, 'El RFC debe tener 13 caracteres'),
         calle: Yup.string().required('Es requerido'),
         num: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
         col: Yup.string().required('Es requerido'),
@@ -48,16 +38,10 @@ const GuardarEmpleado = ({ onCancel }) => {
         estado: Yup.string().required('Es requerido'),
         pais: Yup.string().required('Es requerido'),
         cp: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        telEmp: Yup.string().required('Es requerido'),
-        correoEmp: Yup.string().email('Email inválido').required('Es requerido'),
-        curp: Yup.string().required('Es requerido'),
-        rfc: Yup.string().required('Es requerido'),
-        nss: Yup.string().required('Es requerido'),
-        fechaAlta: Yup.date().required('Es requerido'),
-        empStatus: Yup.string().required('Es requerido'),
-        puesto: Yup.string().required('Es requerido'),
-        sueldo: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
+        telProv: Yup.string().required('Es requerido').length(10, 'El teléfono debe tener 10 dígitos'),
+        correoProv: Yup.string().email('Email inválido').required('Es requerido'),
     });
+
 
     const formik = useFormik({
         initialValues: initialValues,
@@ -65,16 +49,15 @@ const GuardarEmpleado = ({ onCancel }) => {
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
-            values.idEmpleado = randomId;
-            values.idSucursal = 2;
+            values.idProv = randomId;
             console.log(values);
-            dispatch(agregarEmpleado(values))
+            dispatch(agregarProveedor(values))
                 .then((response) => {
                     console.log(response);
                     if (!response.error) {
                         Swal.fire({
                             title: "Guardado Correcto",
-                            text: "El empleado se guardó correctamente",
+                            text: "El proveedor se guardó correctamente",
                             icon: "success",
                             showCancelButton: false,
                             confirmButtonText: "Aceptar",
@@ -99,35 +82,25 @@ const GuardarEmpleado = ({ onCancel }) => {
         <Container className='d-flex justify-content-center'>
             <Row>
                 <h2>
-                    Nuevo Empleado
+                    Nuevo Proveedor
                 </h2>
                 <Form onSubmit={formik.handleSubmit}>
                     <Col md={12}>
                         <InputField
-                            controlId="nomP"
-                            label="Nombre:"
+                            controlId="razSoc"
+                            label="Razón Social:"
                             type="text"
-                            name="nomP"
+                            name="razSoc"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="apP"
-                            label="Apellido Paterno:"
+                            controlId="rfc"
+                            label="RFC:"
                             type="text"
-                            name="apP"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="apM"
-                            label="Apellido Materno:"
-                            type="text"
-                            name="apM"
+                            name="rfc"
                             formik={formik}
                         />
                     </Col>
@@ -204,90 +177,20 @@ const GuardarEmpleado = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="telEmp"
+                            controlId="telProv"
                             label="Teléfono:"
                             type="text"
-                            name="telEmp"
+                            name="telProv"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="correoEmp"
+                            controlId="correoProv"
                             label="Correo:"
                             type="email"
-                            name="correoEmp"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="curp"
-                            label="CURP:"
-                            type="text"
-                            name="curp"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="rfc"
-                            label="RFC:"
-                            type="text"
-                            name="rfc"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="nss"
-                            label="NSS:"
-                            type="text"
-                            name="nss"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="fechaAlta"
-                            label="Fecha de Alta:"
-                            type="date"
-                            name="fechaAlta"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="empStatus"
-                            label="Estatus del Empleado:"
-                            type="text"
-                            name="empStatus"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="puesto"
-                            label="Puesto:"
-                            type="text"
-                            name="puesto"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="sueldo"
-                            label="Sueldo:"
-                            type="number"
-                            name="sueldo"
+                            name="correoProv"
                             formik={formik}
                         />
                     </Col>
@@ -309,9 +212,10 @@ const GuardarEmpleado = ({ onCancel }) => {
                         </div>
                     </Col>
                 </Form>
+
             </Row>
         </Container>
     );
 };
 
-export default GuardarEmpleado;
+export default GuardarProveedor;

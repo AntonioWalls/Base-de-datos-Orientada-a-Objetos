@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
+import { EstructuraClientes } from "../../../../../constants/EstructuraTabla";
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { listarCliente, eliminarCliente } from '../../../../../redux/actions/actionClienteA';
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -13,32 +13,28 @@ const ordenamientoInicial = [
   }
 ];
 
-const TablaEmpleados = ({ mostrarFormulario }) => {
+const TablaClientes = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  const clientes = useSelector((state) => state.getClienteA.clientes?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
-    dispatch(listarEmpleado());
+    dispatch(listarCliente());
   }, [dispatch]);
 
   // Mapeo de datos con id genérico
-  const mappedData = React.useMemo(() => {
-    return empleados.map((item) => ({
-      ...item,
-      id: item.idEmpleado,
-    }));
-  }, [empleados]);
-  
   useEffect(() => {
+    console.log("Datos recibidos de la API:", clientes);
+    const mappedData = clientes.map((item) => ({
+      ...item,
+      id: item.idCliente, // Verifica que este ID sea correcto
+    }));
     setDataState(mappedData);
-  }, [mappedData]);
-  
-  
+  }, [clientes]);
 
   // Función para eliminar la sucursal seleccionada
-  const handleEliminar = (idEmpleado) => {
+  const handleEliminar = (idCliente) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -48,18 +44,18 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(eliminarEmpleado(idEmpleado)).then((response) => {
+        dispatch(eliminarCliente(idCliente)).then((response) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El empleado ha sido eliminada.",
+              text: "El cliente ha sido eliminada.",
               icon: "success"
             });
-            dispatch(listarEmpleado()); 
+            dispatch(listarCliente()); // Recargar las sucursales después de eliminar
           } else {
             Swal.fire({
               title: "Error",
-              text: "No se pudo eliminar el empleado.",
+              text: "No se pudo eliminar el cliente.",
               icon: "error"
             });
           }
@@ -68,8 +64,8 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
     });
   };
 
-  const handleEditar = (idEmpleado) => {
-    mostrarFormulario(true, idEmpleado);
+  const handleEditar = (idCliente) => {
+    mostrarFormulario(true, idCliente);
   };
 
   const handleNuevo = () => {
@@ -79,7 +75,7 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   return (
     dataState && (
       <TablaKendo
-        estructuraTabla={EstructuraEmpleados}
+        estructuraTabla={EstructuraClientes}
         funcionEditar={handleEditar}
         funcionNuevo={handleNuevo}
         funcionEliminar={handleEliminar}
@@ -90,4 +86,4 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   );
 };
 
-export default TablaEmpleados;
+export default TablaClientes;

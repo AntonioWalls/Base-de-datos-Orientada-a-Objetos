@@ -17,7 +17,7 @@ const Ventas = () => {
   }, []);
 
   const mostrarTabla = () => {
-    navigate('/ventasB');
+    navigate('/ventasA');
     setEsEditar(false);
     setMostrarFormulario(false);
     setIdVenta(null); // Resetear ID
@@ -27,7 +27,7 @@ const Ventas = () => {
     setEsEditar(esEditar);
     setMostrarFormulario(true);
     setIdVenta(idVenta);
-    navigate('/ventasB/guardar'); // Usar la misma ruta para ambos formularios
+    navigate('/ventasA/guardar'); // Usar la misma ruta para ambos formularios
   };
 
   return (

@@ -8,13 +8,11 @@ import * as Yup from 'yup';
 
 // Importa las acciones relacionadas con sucursal
 import { obtenerVenta, editarVenta } from '../../../../../redux/actions/actionVentaB';
-import { listarSucursal } from '../../../../../redux/actions/actionSucursalB';
 import InputField from '../../../../common/root/componentes/Input';
 
 const ModificarVenta = ({ onCancel, idVenta }) => {
     const dispatch = useDispatch();
     const [venta, setVenta] = useState(null);
-    const { sucursales } = useSelector(state => state.listarSucursal);
 
     useEffect(() => {
         console.log('ID recibida:', idVenta); // Imprime la ID en consola
@@ -35,13 +33,13 @@ const ModificarVenta = ({ onCancel, idVenta }) => {
 
                     setVenta(data);
                     formik.setValues({
-                        id_venta: data.id_venta || '',          // INT
-                        fecha_venta: formatFecha(data.fecha_venta) || '',  // DATE (formateada)
+                        idVenta: data.idVenta || '',          // INT
+                        fechaVenta: formatFecha(data.fechaVenta) || '',  // DATE (formateada)
                         subtotal: data.subtotal || '',           // MONEY
                         iva: data.iva || '',                     // MONEY
                         total: data.total || '',                 // MONEY
-                        met_pago: data.met_pago || '',           // VARCHAR(20)
-                        id_sucursal: data.id_sucursal || ''      // INT
+                        metPago: data.metPago || '',           // VARCHAR(20)
+                        idSucursal: data.idSucursal || ''      // INT
                     });
 
                 });
@@ -49,30 +47,24 @@ const ModificarVenta = ({ onCancel, idVenta }) => {
     }, [dispatch, idVenta]);
 
     const initialValues = {
-        id_venta: '',       // INT NOT NULL
-        fecha_venta: '',    // DATE
+        idVenta: '',       // INT NOT NULL
+        fechaVenta: '',    // DATE
         subtotal: '',       // MONEY
         iva: '',            // MONEY
         total: '',          // MONEY
-        met_pago: '',       // VARCHAR(20)
-        id_sucursal: ''     // INT NOT NULL
+        metPago: '',       // VARCHAR(20)
+        idSucursal: ''     // INT NOT NULL
     };
-
-    useEffect(() => {
-        dispatch(listarSucursal());
-    }, [dispatch]);
 
 
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: Yup.object({
-            id_venta: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-            fecha_venta: Yup.date().required('Es requerido'),
+            fechaVenta: Yup.date().required('Es requerido'),
             subtotal: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
             iva: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
             total: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-            met_pago: Yup.string().oneOf(['Efectivo', 'Banco'], 'Método de pago inválido').required('Es requerido'),
-            id_sucursal: Yup.number().required('Es requerido').positive('Debe ser un número positivo')
+            metPago: Yup.string().required('Es requerido'),
         }),
         onSubmit: (values) => {
             dispatch(editarVenta(values))
@@ -106,22 +98,13 @@ const ModificarVenta = ({ onCancel, idVenta }) => {
             <Row>
                 <h2>Editar Venta</h2>
                 <Form onSubmit={formik.handleSubmit}>
-                    <Col md={12}>
-                        <InputField
-                            controlId="id_venta"
-                            label="ID Venta:"
-                            type="number"
-                            name="id_venta"
-                            formik={formik}
-                        />
-                    </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="fecha_venta"
+                            controlId="fechaVenta"
                             label="Fecha de Venta:"
                             type="date"
-                            name="fecha_venta"
+                            name="fechaVenta"
                             formik={formik}
                         />
                     </Col>
@@ -157,46 +140,15 @@ const ModificarVenta = ({ onCancel, idVenta }) => {
                     </Col>
 
                     <Col md={12}>
-                        <label htmlFor="met_pago">Método de Pago:</label>
-                        <select
-                            id="met_pago"
-                            name="met_pago"
-                            value={formik.values.met_pago}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            className={formik.touched.met_pago && formik.errors.met_pago ? 'input-error' : ''}
-                        >
-                            <option value="" label="Seleccione el método de pago" />
-                            <option value="Efectivo" label="Efectivo" />
-                            <option value="Banco" label="Banco" />
-                        </select>
-                        {formik.touched.met_pago && formik.errors.met_pago ? (
-                            <div className="error">{formik.errors.met_pago}</div>
-                        ) : null}
+                        <InputField
+                            controlId="metPago"
+                            label="Método de Pago:"
+                            type="text"
+                            name="metPago"
+                            formik={formik}
+                        />
                     </Col>
 
-                    {/* Campo para seleccionar la sucursal */}
-                    <Col md={12}>
-                        <Form.Group controlId="id_sucursal">
-                            <Form.Label>Sucursal:</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="id_sucursal"
-                                value={formik.values.id_sucursal}
-                                onChange={formik.handleChange}
-                            >
-                                <option value="">Selecciona una sucursal</option>
-                                {sucursales.map((sucursal) => (
-                                    <option key={sucursal.id} value={sucursal.id}>
-                                        {sucursal.raz_soc}
-                                    </option>
-                                ))}
-                            </Form.Control>
-                            {formik.errors.id_sucursal && formik.touched.id_sucursal ? (
-                                <div className="text-danger">{formik.errors.id_sucursal}</div>
-                            ) : null}
-                        </Form.Group>
-                    </Col>
 
                     <Col md={12} style={{ paddingTop: "10px" }}>
                         <div className="mt-3 d-flex justify-content-end">

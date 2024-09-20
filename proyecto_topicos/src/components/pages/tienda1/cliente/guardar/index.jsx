@@ -1,64 +1,19 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-// Importa las acciones relacionadas con empleados y sucursales
-import { obtenerEmpleado, editarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { agregarCliente } from '../../../../../redux/actions/actionClienteA';
 import InputField from '../../../../common/root/componentes/Input';
 
-const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
+const GuardarCliente = ({ onCancel }) => {
     const dispatch = useDispatch();
-    const [empleado, setEmpleado] = useState(null);
 
-    useEffect(() => {
-        if (idEmpleado) {
-            dispatch(obtenerEmpleado(idEmpleado))
-                .then((response) => {
-                    const data = response.payload.response;
-
-                    // Formatear la fecha a 'YYYY-MM-DD' si no es nulo
-                    const formatFecha = (fecha) => {
-                        if (fecha) {
-                            const date = new Date(fecha);
-                            return date.toISOString().split('T')[0];
-                        }
-                        return '';
-                    };
-
-                    setEmpleado(data);
-                    formik.setValues({
-                        idEmpleado: data.idEmpleado || '',
-                        nomP: data.nomP || '',
-                        apP: data.apP || '',
-                        apM: data.apM || '',
-                        calle: data.calle || '',
-                        num: data.num || '',
-                        col: data.col || '',
-                        ciudad: data.ciudad || '',
-                        estado: data.estado || '',
-                        pais: data.pais || '',
-                        cp: data.cp || '',
-                        telEmp: data.telEmp || '',
-                        correoEmp: data.correoEmp || '',
-                        curp: data.curp || '',
-                        rfc: data.rfc || '',
-                        nss: data.nss || '',
-                        fechaAlta: formatFecha(data.fechaAlta),
-                        empStatus: data.empStatus || '',
-                        puesto: data.puesto || '',
-                        sueldo: data.sueldo || '',
-                        idSucursal: data.idSucursal || ''
-                    });
-                    console.log(data);
-                });
-        }
-    }, [dispatch, idEmpleado]);
-
+    // Valores iniciales del formulario
     const initialValues = {
-        idEmpleado: '',
+        idCliente: '',
         nomP: '',
         apP: '',
         apM: '',
@@ -67,25 +22,16 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
         col: '',
         ciudad: '',
         estado: '',
-        pais: '',
         cp: '',
-        telEmp: '',
-        correoEmp: '',
-        curp: '',
+        correo: '',
+        telefono: '',
         rfc: '',
-        nss: '',
-        fechaAlta: '',
-        empStatus: '',
-        puesto: '',
-        sueldo: '',
-        idSucursal: ''
+        fechaReg: '',
+        idSucursal: '',
     };
 
-
-    const formik = useFormik({
-        initialValues: initialValues,
-        validationSchema: Yup.object({
-            nomP: Yup.string().required('Es requerido'),
+    const validationSchema = Yup.object({
+        nomP: Yup.string().required('Es requerido'),
         apP: Yup.string().required('Es requerido'),
         apM: Yup.string().required('Es requerido'),
         calle: Yup.string().required('Es requerido'),
@@ -95,23 +41,28 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
         estado: Yup.string().required('Es requerido'),
         pais: Yup.string().required('Es requerido'),
         cp: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        telEmp: Yup.string().required('Es requerido'),
-        correoEmp: Yup.string().email('Email inválido').required('Es requerido'),
-        curp: Yup.string().required('Es requerido'),
+        correo: Yup.string().email('Email inválido').required('Es requerido'),
+        telefono: Yup.string().required('Es requerido'),
         rfc: Yup.string().required('Es requerido'),
-        nss: Yup.string().required('Es requerido'),
-        fechaAlta: Yup.date().required('Es requerido'),
-        empStatus: Yup.string().required('Es requerido'),
-        puesto: Yup.string().required('Es requerido'),
-        sueldo: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        }),
+        fechaReg: Yup.date().required('Es requerido'),
+    });
+
+    const formik = useFormik({
+        initialValues: initialValues,
+        validationSchema: validationSchema,
         onSubmit: (values) => {
-            dispatch(editarEmpleado(values))
+            // Generar un número aleatorio entre 1 y 1000
+            const randomId = Math.floor(Math.random() * 1000) + 1;
+            values.idCliente = randomId;
+            values.idSucursal = 2;
+            console.log(values);
+            dispatch(agregarCliente(values))
                 .then((response) => {
+                    console.log(response);
                     if (!response.error) {
                         Swal.fire({
-                            title: "Actualización Correcta",
-                            text: "El empleado se actualizó correctamente",
+                            title: "Guardado Correcto",
+                            text: "El cliente se guardó correctamente",
                             icon: "success",
                             showCancelButton: false,
                             confirmButtonText: "Aceptar",
@@ -135,7 +86,9 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
     return (
         <Container className='d-flex justify-content-center'>
             <Row>
-                <h2>Editar Empleado</h2>
+                <h2>
+                    Nuevo Cliente
+                </h2>
                 <Form onSubmit={formik.handleSubmit}>
                     <Col md={12}>
                         <InputField
@@ -239,30 +192,10 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="telEmp"
+                            controlId="telefono"
                             label="Teléfono:"
                             type="text"
-                            name="telEmp"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="correoEmp"
-                            label="Correo:"
-                            type="email"
-                            name="correoEmp"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="curp"
-                            label="CURP:"
-                            type="text"
-                            name="curp"
+                            name="telefono"
                             formik={formik}
                         />
                     </Col>
@@ -279,50 +212,20 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="nss"
-                            label="NSS:"
-                            type="text"
-                            name="nss"
+                            controlId="correo"
+                            label="Correo:"
+                            type="email"
+                            name="correo"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="fechaAlta"
-                            label="Fecha de Alta:"
+                            controlId="fechaReg"
+                            label="Fecha de Registro:"
                             type="date"
-                            name="fechaAlta"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="empStatus"
-                            label="Estatus del Empleado:"
-                            type="text"
-                            name="empStatus"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="puesto"
-                            label="Puesto:"
-                            type="text"
-                            name="puesto"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="sueldo"
-                            label="Sueldo:"
-                            type="number"
-                            name="sueldo"
+                            name="fechaReg"
                             formik={formik}
                         />
                     </Col>
@@ -344,9 +247,10 @@ const ModificarEmpleado = ({ onCancel, idEmpleado }) => {
                         </div>
                     </Col>
                 </Form>
+
             </Row>
         </Container>
     );
 };
 
-export default ModificarEmpleado;
+export default GuardarCliente;

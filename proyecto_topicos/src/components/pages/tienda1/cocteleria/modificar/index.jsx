@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 // Importa las acciones relacionadas con sucursal
-import { obtenerCocteleria, editarCocteleria } from '../../../../../redux/actions/actionCocteleriaB';
+import { obtenerCocteleria, editarCocteleria } from '../../../../../redux/actions/actionCocteleriaA';
 import InputField from '../../../../common/root/componentes/Input';
 
 const ModificarCocteleria = ({ onCancel, idCoct }) => {

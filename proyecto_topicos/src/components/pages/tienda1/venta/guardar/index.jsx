@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 import InputField from '../../../../common/root/componentes/Input';
-import { agregarVenta } from '../../../../../redux/actions/actionVentaB';
+import { agregarVenta } from '../../../../../redux/actions/actionVentaA';
 
 const GuardarVenta = ({ onCancel }) => {
     const dispatch = useDispatch();

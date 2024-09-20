@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
+import { EstructuraProveedores } from "../../../../../constants/EstructuraTabla";
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { listarProveedor, eliminarProveedor } from '../../../../../redux/actions/actionProveedorA';
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -13,32 +13,28 @@ const ordenamientoInicial = [
   }
 ];
 
-const TablaEmpleados = ({ mostrarFormulario }) => {
+const TablaProveedor = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  const proveedores = useSelector((state) => state.getProveedorA.proveedores?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
-    dispatch(listarEmpleado());
+    dispatch(listarProveedor());
   }, [dispatch]);
 
-  // Mapeo de datos con id genérico
-  const mappedData = React.useMemo(() => {
-    return empleados.map((item) => ({
-      ...item,
-      id: item.idEmpleado,
-    }));
-  }, [empleados]);
-  
   useEffect(() => {
+    console.log("Datos recibidos de la API:", proveedores);
+    const mappedData = proveedores.map((item) => ({
+      ...item,
+      id: item.idProv || item.idSucursal || item.idOtraEntidad, // Asegúrate de que uno de estos campos exista
+    }));
     setDataState(mappedData);
-  }, [mappedData]);
-  
+  }, [proveedores]);
   
 
-  // Función para eliminar la sucursal seleccionada
-  const handleEliminar = (idEmpleado) => {
+  // Función para eliminar el proveedor seleccionado
+  const handleEliminar = (id) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -48,18 +44,18 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(eliminarEmpleado(idEmpleado)).then((response) => {
+        dispatch(eliminarProveedor(id)).then((response) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El empleado ha sido eliminada.",
+              text: "El proveedor ha sido eliminado.",
               icon: "success"
             });
-            dispatch(listarEmpleado()); 
+            dispatch(listarProveedor()); // Recargar los proveedores después de eliminar
           } else {
             Swal.fire({
               title: "Error",
-              text: "No se pudo eliminar el empleado.",
+              text: "No se pudo eliminar el proveedor.",
               icon: "error"
             });
           }
@@ -68,8 +64,8 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
     });
   };
 
-  const handleEditar = (idEmpleado) => {
-    mostrarFormulario(true, idEmpleado);
+  const handleEditar = (id) => {
+    mostrarFormulario(true, id); // Usamos el campo genérico id
   };
 
   const handleNuevo = () => {
@@ -79,7 +75,7 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   return (
     dataState && (
       <TablaKendo
-        estructuraTabla={EstructuraEmpleados}
+        estructuraTabla={EstructuraProveedores}
         funcionEditar={handleEditar}
         funcionNuevo={handleNuevo}
         funcionEliminar={handleEliminar}
@@ -90,4 +86,4 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   );
 };
 
-export default TablaEmpleados;
+export default TablaProveedor;

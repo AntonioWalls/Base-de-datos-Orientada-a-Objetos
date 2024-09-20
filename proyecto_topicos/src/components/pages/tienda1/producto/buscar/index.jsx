@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
+import { EstructuraProductos } from "../../../../../constants/EstructuraTabla";
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { listarProducto, eliminarProducto } from '../../../../../redux/actions/actionProductoA';
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -13,23 +13,23 @@ const ordenamientoInicial = [
   }
 ];
 
-const TablaEmpleados = ({ mostrarFormulario }) => {
+const TablaProductos = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  const productos = useSelector((state) => state.getProductoA.productos?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {
-    dispatch(listarEmpleado());
+    dispatch(listarProducto());
   }, [dispatch]);
 
   // Mapeo de datos con id genérico
   const mappedData = React.useMemo(() => {
-    return empleados.map((item) => ({
+    return productos.map((item) => ({
       ...item,
-      id: item.idEmpleado,
+      id: item.idSucursal || item.idProv || item.idProd,
     }));
-  }, [empleados]);
+  }, [productos]);
   
   useEffect(() => {
     setDataState(mappedData);
@@ -38,7 +38,7 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   
 
   // Función para eliminar la sucursal seleccionada
-  const handleEliminar = (idEmpleado) => {
+  const handleEliminar = (idProducto) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -48,18 +48,18 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(eliminarEmpleado(idEmpleado)).then((response) => {
+        dispatch(eliminarProducto(idProducto)).then((response) => {
           if (!response.error) {
             Swal.fire({
               title: "Eliminado",
-              text: "El empleado ha sido eliminada.",
+              text: "El producto ha sido eliminada.",
               icon: "success"
             });
-            dispatch(listarEmpleado()); 
+            dispatch(listarProducto()); 
           } else {
             Swal.fire({
               title: "Error",
-              text: "No se pudo eliminar el empleado.",
+              text: "No se pudo eliminar el producto.",
               icon: "error"
             });
           }
@@ -68,8 +68,8 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
     });
   };
 
-  const handleEditar = (idEmpleado) => {
-    mostrarFormulario(true, idEmpleado);
+  const handleEditar = (idProducto) => {
+    mostrarFormulario(true, idProducto);
   };
 
   const handleNuevo = () => {
@@ -79,7 +79,7 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   return (
     dataState && (
       <TablaKendo
-        estructuraTabla={EstructuraEmpleados}
+        estructuraTabla={EstructuraProductos}
         funcionEditar={handleEditar}
         funcionNuevo={handleNuevo}
         funcionEliminar={handleEliminar}
@@ -90,4 +90,4 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   );
 };
 
-export default TablaEmpleados;
+export default TablaProductos;

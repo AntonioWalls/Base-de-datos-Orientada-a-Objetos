@@ -7,6 +7,13 @@ import mensajesKendo from '../kendo/es.json';
 import App from '../../layout/App/App';
 import Inicio from '../../pages/inicio/Inicio';
 import Sucursal from '../../pages/sucursal';
+import VentaA from '../../pages/tienda1/venta'
+import ClienteA from '../../pages/tienda1/cliente'
+import EmpleadoA from '../../pages/tienda1/empleado'
+import ProveedorA from '../../pages/tienda1/proveedor'
+import CocteleriaA from '../../pages/tienda1/cocteleria'
+import ProductoA from '../../pages/tienda1/producto'
+
 import Sucursal2 from '../../pages/tienda2/sucursal';
 import VentaB from '../../pages/tienda2/venta'
 import ClienteB from '../../pages/tienda2/cliente'
@@ -40,6 +47,18 @@ const Root = () => {
             <Route path="cocteleriaB/guardar" element={<CocteleriaB />} />
             <Route path="productoB" element={<ProductoB />} />
             <Route path="productoB/guardar" element={<ProductoB />} />
+            <Route path="ventasA" element={<VentaA />} />
+            <Route path="ventasA/guardar" element={<VentaA />} />
+            <Route path="clientesA" element={<ClienteA />} />
+            <Route path="clientesA/guardar" element={<ClienteA />} />
+            <Route path="empleadosA" element={<EmpleadoA />} />
+            <Route path="empleadosA/guardar" element={<EmpleadoA />} />
+            <Route path="proveedorA" element={<ProveedorA />} />
+            <Route path="proveedorA/guardar" element={<ProveedorA />} />
+            <Route path="cocteleriaA" element={<CocteleriaA />} />
+            <Route path="cocteleriaA/guardar" element={<CocteleriaA />} />
+            <Route path="productoA" element={<ProductoA />} />
+            <Route path="productoA/guardar" element={<ProductoA />} />
           </Route>
         </Routes>
       </BrowserRouter>

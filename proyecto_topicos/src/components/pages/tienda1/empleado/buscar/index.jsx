@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoA';
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -16,7 +16,7 @@ const ordenamientoInicial = [
 const TablaEmpleados = ({ mostrarFormulario }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empleados = useSelector((state) => state.getEmpleadoB.empleados?.response || []);
+  const empleados = useSelector((state) => state.getEmpleadoA.empleados?.response || []);
   const [dataState, setDataState] = useState([]);
 
   useEffect(() => {

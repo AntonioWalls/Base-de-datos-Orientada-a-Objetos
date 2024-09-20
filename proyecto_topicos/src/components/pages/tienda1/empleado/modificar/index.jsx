@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 // Importa las acciones relacionadas con empleados y sucursales
-import { obtenerEmpleado, editarEmpleado } from '../../../../../redux/actions/actionEmpleadoB';
+import { obtenerEmpleado, editarEmpleado } from '../../../../../redux/actions/actionEmpleadoA';
 import InputField from '../../../../common/root/componentes/Input';
 
 const ModificarEmpleado = ({ onCancel, idEmpleado }) => {

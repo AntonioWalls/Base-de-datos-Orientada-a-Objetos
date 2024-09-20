@@ -1,34 +1,30 @@
 import { Form, Button, Col, Row, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import React, { useEffect } from 'react'; // Importa useEffect junto con React
-import { useSelector } from 'react-redux'; // Importa useSelector para acceder al estado
+import React from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 import InputField from '../../../../common/root/componentes/Input';
-import { agregarVenta } from '../../../../../redux/actions/actionVentaB';
+import { agregarCocteleria } from '../../../../../redux/actions/actionCocteleriaA';
 
-const GuardarVenta = ({ onCancel }) => {
+const GuardarCocteleria = ({ onCancel }) => {
     const dispatch = useDispatch();
 
     // Valores iniciales del formulario
     const initialValues = {
-        idVenta: '',       // INT NOT NULL
-        fechaVenta: '',    // DATE
-        subtotal: '',       // MONEY
-        iva: '',            // MONEY
-        total: '',          // MONEY
-        metPago: '',       // VARCHAR(20)
-        idSucursal: ''     // INT NOT NULL
+        idCoct: '', // ID de coctelería
+        nombre: '', // Nombre
+        mezcla: '', // Mezcla
+        descr: '', // Descripción
+        precVent: '' // Precio de venta
     };
 
     const validationSchema = Yup.object({
-        fechaVenta: Yup.date().required('Es requerido'),
-        subtotal: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        iva: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        total: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        metPago: Yup.string().required('Es requerido'),
+        nombre: Yup.string().required('Es requerido'),
+        mezcla: Yup.string().required('Es requerido'),
+        descr: Yup.string().required('Es requerido'),
+        precVent: Yup.number().required('Es requerido').positive('Debe ser un número positivo')
     });
 
 
@@ -38,16 +34,15 @@ const GuardarVenta = ({ onCancel }) => {
         onSubmit: (values) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
-            values.idVenta = randomId;
-            values.idSucursal = 2;
+            values.idCoct = randomId;
             console.log(values);
-            dispatch(agregarVenta(values))
+            dispatch(agregarCocteleria(values))
                 .then((response) => {
                     console.log(response);
                     if (!response.error) {
                         Swal.fire({
                             title: "Guardado Correcto",
-                            text: "La venta se guardó correctamente",
+                            text: "El coctel se guardó correctamente",
                             icon: "success",
                             showCancelButton: false,
                             confirmButtonText: "Aceptar",
@@ -72,74 +67,62 @@ const GuardarVenta = ({ onCancel }) => {
         <Container className='d-flex justify-content-center'>
             <Row>
                 <h2>
-                    Nueva Venta
+                    Nuevo coctel
                 </h2>
                 <Form onSubmit={formik.handleSubmit}>
 
                     <Col md={12}>
                         <InputField
-                            controlId="fechaVenta"
-                            label="Fecha de Venta:"
-                            type="date"
-                            name="fechaVenta"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="subtotal"
-                            label="Subtotal:"
-                            type="number"
-                            name="subtotal"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="iva"
-                            label="IVA:"
-                            type="number"
-                            name="iva"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="total"
-                            label="Total:"
-                            type="number"
-                            name="total"
-                            formik={formik}
-                        />
-                    </Col>
-
-                    <Col md={12}>
-                        <InputField
-                            controlId="metPago"
-                            label="Método de Pago:"
+                            controlId="nombre"
+                            label="Nombre:"
                             type="text"
-                            name="metPago"
+                            name="nombre"
                             formik={formik}
                         />
                     </Col>
 
+                    <Col md={12}>
+                        <InputField
+                            controlId="mezcla"
+                            label="Mezcla:"
+                            type="text"
+                            name="mezcla"
+                            formik={formik}
+                        />
+                    </Col>
+
+                    <Col md={12}>
+                        <InputField
+                            controlId="descr"
+                            label="Descripción:"
+                            type="text"
+                            name="descr"
+                            formik={formik}
+                        />
+                    </Col>
+
+                    <Col md={12}>
+                        <InputField
+                            controlId="precVent"
+                            label="Precio de Venta:"
+                            type="number"
+                            name="precVent"
+                            formik={formik}
+                        />
+                    </Col>
 
                     <Col md={12} style={{ paddingTop: "10px" }}>
                         <div className="mt-3 d-flex justify-content-end">
                             <Button
-                                className="mx-3"
+                                className='mx-3'
                                 variant="danger"
-                                onClick={handleCancel}
-                            >
+                                onClick={handleCancel}>
                                 Cancelar
                             </Button>
                             <Button
+                                className=''
                                 variant="primary"
-                                type="submit"
-                            >
+                                type="submit">
                                 Guardar
                             </Button>
                         </div>
@@ -151,4 +134,4 @@ const GuardarVenta = ({ onCancel }) => {
     );
 };
 
-export default GuardarVenta;
+export default GuardarCocteleria;

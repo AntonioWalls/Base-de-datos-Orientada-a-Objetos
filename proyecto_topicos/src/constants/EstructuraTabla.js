@@ -26,10 +26,10 @@ export const EstructuraSucursales = {
 
   export const  EstructuraEmpleados = {
     columns: [
-      { field: "nomP", key: "nom_p", title: "Nombre" },
+      { field: "nomP", key: "nomP", title: "Nombre" },
       { field: "apP", key: "apP", title: "Apellido Paterno" },
       { field: "apM", key: "apM", title: "Apellido Materno" },
-      { field: "telefono", key: "telefono", title: "Telefono" },
+      { field: "telEmp", key: "telEmp", title: "Telefono" },
       { field: "ciudad", key: "ciudad", title: "Ciudad" },
       { field: "empStatus", key: "empStatus", title: "Estatus" },
     ],

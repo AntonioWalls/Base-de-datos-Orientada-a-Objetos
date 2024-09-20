@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from 'react-router-dom';
 import { EstructuraCoctelerias } from "../../../../../constants/EstructuraTabla"; 
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
-import { listarCocteleria, eliminarCocteleria } from '../../../../../redux/actions/actionCocteleriaB'; 
+import { listarCocteleria, eliminarCocteleria } from '../../../../../redux/actions/actionCocteleriaA'; 
 import Swal from 'sweetalert2';
 
 const ordenamientoInicial = [
@@ -18,7 +18,7 @@ const TablaCocteleria = ({ mostrarFormulario }) => {
   const dispatch = useDispatch();
   
   // Obtener cocteles del store de Redux
-  const coctelerias = useSelector((state) => state.getCocteleriaB.coctelerias?.response || []);
+  const coctelerias = useSelector((state) => state.getCocteleriaA.coctelerias?.response || []);
   
   // Dispatch de la acción para listar los cocteles solo al montar el componente
   useEffect(() => {
