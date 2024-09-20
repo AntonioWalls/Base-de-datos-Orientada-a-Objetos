@@ -5,6 +5,8 @@ import { EstructuraEmpleados } from "../../../../../constants/EstructuraTabla";
 import TablaKendo from "../../../../common/root/componentes/TablaKendo";
 import { listarEmpleado, eliminarEmpleado } from '../../../../../redux/actions/actionEmpleadoA';
 import Swal from 'sweetalert2';
+import FiltroEmpleado from './filtro';  // Importa el filtro
+
 
 const ordenamientoInicial = [
   {
@@ -18,10 +20,12 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
   const dispatch = useDispatch();
   const empleados = useSelector((state) => state.getEmpleadoA.empleados?.response || []);
   const [dataState, setDataState] = useState([]);
+  const [filtros, setFiltro] = useState({ Habilitado: true });  // Estado para filtros
+
 
   useEffect(() => {
     dispatch(listarEmpleado());
-  }, [dispatch]);
+  }, [dispatch, filtros]);
 
   // Mapeo de datos con id genérico
   const mappedData = React.useMemo(() => {
@@ -78,14 +82,21 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
 
   return (
     dataState && (
-      <TablaKendo
-        estructuraTabla={EstructuraEmpleados}
-        funcionEditar={handleEditar}
-        funcionNuevo={handleNuevo}
-        funcionEliminar={handleEliminar}
-        data={dataState}
-        ordenamientoInicial={ordenamientoInicial}
-      />
+      <>
+        {/* Componente para filtrar los clientes */}
+        <FiltroEmpleado
+          onFilter={(newValues) => setFiltro(newValues)}  // Actualiza los filtros con base en el filtro aplicado
+        />
+        {/* Componente de la tabla Kendo */}
+        <TablaKendo
+          estructuraTabla={EstructuraEmpleados}
+          funcionEditar={handleEditar}
+          funcionNuevo={handleNuevo}
+          funcionEliminar={handleEliminar}
+          data={dataState}
+          ordenamientoInicial={ordenamientoInicial}
+        />
+      </>
     )
   );
 };
