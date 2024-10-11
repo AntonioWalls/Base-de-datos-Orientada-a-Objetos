@@ -28,7 +28,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
             try
             {
                 // Realiza una consulta de todos los objetos Cliente
-                IList<Cliente> consulta = BD.Query<Cliente>();
+                IList<DTOCliente> consulta = BD.Query<DTOCliente>();
 
                 // Si hay resultados, retorna la lista con un mensaje de éxito
                 if (consulta.Count > 0)
@@ -54,17 +54,44 @@ namespace API_AntonioWalls.Controllers_Instancia1
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar()
+        public IActionResult Guardar([FromBody] DTOCliente newCliente)
         {
+            IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
             try
             {
+                DTOCliente objeto = new DTOCliente
+                {
+                        IdCliente = newCliente.IdCliente,
+                        NomP = newCliente.NomP,
+                        ApP = newCliente.ApP,
+                        ApM = newCliente.ApM,
+                        Calle = newCliente.Calle,
+                        Num = newCliente.Num,
+                        Col = newCliente.Col,
+                        Ciudad = newCliente.Ciudad,
+                        Estado = newCliente.Estado,
+                        Pais = newCliente.Pais,
+                        Cp = newCliente.Cp,
+                        Correo = newCliente.Correo,
+                        Telefono = newCliente.Telefono,
+                        Rfc = newCliente.Rfc,
+                        FechaReg = newCliente.FechaReg,
+                        IdSucursal = newCliente.IdSucursal,
+                };
+                BD.Store(objeto);
+                BD.Commit();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
 
             }
-            catch
+            catch(Exception ex) 
             {
-
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
+            }
+            finally
+            {
+                BD.Close();
             }
             /*
              * [HttpPost]

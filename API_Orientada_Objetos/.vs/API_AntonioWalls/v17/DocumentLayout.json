@@ -1,98 +1,112 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\",
+  "WorkspaceRootPath": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\fabia\\onedrive\\documentos\\topicosbd\\base orientada a objetos\\topicosbd2\\api_orientada_objetos\\api_antoniowalls\\controllers_instancia1\\clienteinstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\controllers_instancia1\\clienteinstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\controllers_instancia1\\clienteinstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\fabia\\onedrive\\documentos\\topicosbd\\base orientada a objetos\\topicosbd2\\api_orientada_objetos\\api_antoniowalls\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\dtosucursal1\\dtocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\dtosucursal1\\dtocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\fabia\\onedrive\\documentos\\topicosbd\\base orientada a objetos\\topicosbd2\\api_orientada_objetos\\api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\fabia\\onedrive\\documentos\\topicosbd\\base orientada a objetos\\topicosbd2\\api_orientada_objetos\\api_antoniowalls\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API_AntonioWalls\\Controllers\\SucursalesController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 125,
+      "VerticalTabListWidth": 100,
       "DocumentGroups": [
         {
           "DockedWidth": 794,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DTOCliente.cs",
+              "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
+              "RelativeDocumentMoniker": "API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
+              "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
+              "RelativeToolTip": "API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:36:25.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Models\\Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Models\\Cliente.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\Models\\Cliente.cs",
-              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Models\\Cliente.cs",
               "RelativeToolTip": "API_AntonioWalls\\Models\\Cliente.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T23:39:38.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T23:39:38.754Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ClienteInstancia1.cs",
-              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
+              "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
-              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
+              "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
               "RelativeToolTip": "API_AntonioWalls\\Controllers_Instancia1\\ClienteInstancia1.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAADwv2cAAAAOAAAA",
+              "ViewState": "AgIAADIAAAAAAAAAAADwv00AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T22:39:31.039Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SucursalesController.cs",
               "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs",
-              "RelativeDocumentMoniker": "API_AntonioWalls\\Controllers\\SucursalesController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs",
               "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs",
-              "RelativeToolTip": "API_AntonioWalls\\Controllers\\SucursalesController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers\\SucursalesController.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAAwCMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T22:28:52.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CategoriaInstancia1.cs",
               "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
-              "RelativeDocumentMoniker": "API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
               "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
-              "RelativeToolTip": "API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\CategoriaInstancia1.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T22:28:25.747Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\appsettings.json",
               "RelativeDocumentMoniker": "API_AntonioWalls\\appsettings.json",
-              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\appsettings.json",
+              "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\appsettings.json",
               "RelativeToolTip": "API_AntonioWalls\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -100,16 +114,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Program.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\Program.cs",
-              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base Orientada a Objetos\\TopicosBD2\\API_Orientada_Objetos\\API_AntonioWalls\\Program.cs",
+              "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Program.cs",
               "RelativeToolTip": "API_AntonioWalls\\Program.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAADwvyQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T22:11:23.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T22:11:23.673Z"
             }
           ]
         }
