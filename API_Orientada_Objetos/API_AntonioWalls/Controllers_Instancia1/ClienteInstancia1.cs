@@ -5,6 +5,7 @@ using Db4objects.Db4o;
 using System.Linq;
 using Db4objects.Db4o.Query;
 using API_AntonioWalls.DTOsucursal1;
+using Microsoft.Identity.Client;
 
 namespace API_AntonioWalls.Controllers_Instancia1
 {
@@ -63,72 +64,64 @@ namespace API_AntonioWalls.Controllers_Instancia1
             {
                 DTOCliente objeto = new DTOCliente
                 {
-                        IdCliente = newCliente.IdCliente,
-                        NomP = newCliente.NomP,
-                        ApP = newCliente.ApP,
-                        ApM = newCliente.ApM,
-                        Calle = newCliente.Calle,
-                        Num = newCliente.Num,
-                        Col = newCliente.Col,
-                        Ciudad = newCliente.Ciudad,
-                        Estado = newCliente.Estado,
-                        Pais = newCliente.Pais,
-                        Cp = newCliente.Cp,
-                        Correo = newCliente.Correo,
-                        Telefono = newCliente.Telefono,
-                        Rfc = newCliente.Rfc,
-                        FechaReg = newCliente.FechaReg,
-                        IdSucursal = newCliente.IdSucursal,
+                    IdCliente = newCliente.IdCliente,
+                    NomP = newCliente.NomP,
+                    ApP = newCliente.ApP,
+                    ApM = newCliente.ApM,
+                    Calle = newCliente.Calle,
+                    Num = newCliente.Num,
+                    Col = newCliente.Col,
+                    Ciudad = newCliente.Ciudad,
+                    Estado = newCliente.Estado,
+                    Pais = newCliente.Pais,
+                    Cp = newCliente.Cp,
+                    Correo = newCliente.Correo,
+                    Telefono = newCliente.Telefono,
+                    Rfc = newCliente.Rfc,
+                    FechaReg = newCliente.FechaReg,
+                    IdSucursal = newCliente.IdSucursal,
                 };
                 BD.Store(objeto);
                 BD.Commit();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
 
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
             }
             finally
             {
                 BD.Close();
-            }
-            /*
-             * [HttpPost]
-        [Route("Guardar")]
-        public IActionResult Guardar([FromBody] SucursalesDTO newSucursal)
+            } 
+        }
+
+        [HttpPut]
+        [Route("Editar")]
+        public IActionResult Editar([FromBody] DTOCliente newCliente, int clave)
         {
+            IObjectContainer BD = Db4oFactory.OpenFile("SuperDB.yap");
+
             try
             {
-                var objeto = new Sucursales()
+                IList<DTOCliente> results = BD.Query<DTOCliente>(c => c.IdCliente == newCliente.IdCliente);
+            
+                if (results.Count == 0)
                 {
-                    IdSucursal = newSucursal.IdSucursal,
-                    RazSoc = newSucursal.RazSoc,
-                    Calle = newSucursal.Calle,
-                    Num = newSucursal.Num,
-                    Col = newSucursal.Col,
-                    Ciudad = newSucursal.Ciudad,
-                    Estado = newSucursal.Estado,
-                    Pais = newSucursal.Pais,
-                    Cp = newSucursal.Cp,
-                    Presup = newSucursal.Presup,
-                    TelefonoSuc = newSucursal.TelefonoSuc,
-                    Rfc = newSucursal.Rfc,
-                    Correo = newSucursal.Correo,
-                    FechaAp = newSucursal.FechaAp,
-                };
-                linkedcontext.Sucursales.Add(objeto);
-                linkedcontext.SaveChanges();
-
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-            }
-            catch (Exception ex)
+                    return StatusCode(StatusCodes.Status404NotFound, new { mensaje = "No se encontraron clientes" });
+                }
+            
+            
+            
+            }catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
 
             }
-        }
-            */
+
+            
+        
+                
+                
         }
 
     }
