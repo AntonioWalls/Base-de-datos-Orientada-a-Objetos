@@ -1,12 +1,12 @@
 ﻿namespace API_AntonioWalls.DTOsucursal1
 {
-    public class DTOProveedores
+    public class DTOPersona
     {
-        public int IdProv { get; set; }
+        public string? NomP { get; set; }
 
-        public string? RazSoc { get; set; }
+        public string? ApP { get; set; }
 
-        public string? Rfc { get; set; }
+        public string? ApM { get; set; }
 
         public string? Calle { get; set; }
 
@@ -22,8 +22,10 @@
 
         public int? Cp { get; set; }
 
-        public string? TelProv { get; set; }
+        public string? Correo { get; set; }
 
-        public string? CorreoProv { get; set; }
+        public string? Telefono { get; set; }
+
+        public string? Rfc { get; set; }
     }
 }
