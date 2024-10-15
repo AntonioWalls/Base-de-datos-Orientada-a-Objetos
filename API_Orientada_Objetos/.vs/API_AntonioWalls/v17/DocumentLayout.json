@@ -15,16 +15,16 @@
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\dtosucursal1\\dtocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\dtosucursal1\\dtopersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\dtosucursal1\\dtopersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\dtosucursal1\\dtoempleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\dtosucursal1\\dtoempleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|solutionrelative:api_antoniowalls\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE59FAC4-7D76-4113-A112-E33D2380F4C9}|API_AntonioWalls\\API_AntonioWalls.csproj|c:\\users\\antonio walls\\documents\\topicos de bd\\base-de-datos-orientada-a-objetos\\api_orientada_objetos\\api_antoniowalls\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -54,14 +54,14 @@
               "RelativeDocumentMoniker": "API_AntonioWalls\\Controllers_Instancia1\\Empleado.cs",
               "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\Empleado.cs",
               "RelativeToolTip": "API_AntonioWalls\\Controllers_Instancia1\\Empleado.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAUwDMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAUwD0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T18:53:48.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "DTOEmpleado.cs",
               "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\DTOsucursal1\\DTOEmpleado.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\DTOsucursal1\\DTOEmpleado.cs",
@@ -69,7 +69,8 @@
               "RelativeToolTip": "API_AntonioWalls\\DTOsucursal1\\DTOEmpleado.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T01:39:14.528Z"
+              "WhenOpened": "2024-10-15T01:39:14.528Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -79,14 +80,14 @@
               "RelativeDocumentMoniker": "API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
               "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
               "RelativeToolTip": "API_AntonioWalls\\DTOsucursal1\\DTOCliente.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAcwAkAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T01:42:59.356Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "DTOPersona.cs",
               "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\DTOsucursal1\\DTOPersona.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\DTOsucursal1\\DTOPersona.cs",
@@ -105,7 +106,7 @@
               "RelativeDocumentMoniker": "API_AntonioWalls\\Controllers_Instancia1\\Cliente.cs",
               "ToolTip": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Controllers_Instancia1\\Cliente.cs",
               "RelativeToolTip": "API_AntonioWalls\\Controllers_Instancia1\\Cliente.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAA2wD4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAADwv0YAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T22:39:31.039Z",
               "EditorCaption": ""
@@ -146,7 +147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\Program.cs",
               "RelativeDocumentMoniker": "API_AntonioWalls\\Program.cs",

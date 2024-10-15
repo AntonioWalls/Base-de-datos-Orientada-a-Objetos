@@ -59,14 +59,14 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
         [HttpGet]
         [Route("Obtener/{idCliente:int}")]
-        public IActionResult Obtener(int id)
+        public IActionResult Obtener(int idCliente)
         {
             // Abre la base de datos db4o
             IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
             try
             {
                 // Buscar el cliente por su IdCliente usando Query LINQ
-                DTOCliente cliente = BD.Query<DTOCliente>(x => x.IdCliente == id).FirstOrDefault();
+                DTOCliente cliente = BD.Query<DTOCliente>(x => x.IdCliente == idCliente).FirstOrDefault();
 
                 // Verificar si se encontró el cliente
                 if (cliente != null)

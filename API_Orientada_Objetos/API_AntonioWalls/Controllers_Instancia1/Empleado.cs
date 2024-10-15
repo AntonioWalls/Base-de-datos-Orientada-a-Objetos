@@ -48,14 +48,14 @@ namespace API_AntonioWalls.Controllers_Instancia1
 
         [HttpGet]
         [Route("ObtenerEmpleado/{idEmpleado:int}")]
-        public IActionResult ObtenerEmpleado(int id)
+        public IActionResult ObtenerEmpleado(int idEmpleado)
         {
             // Abre la base de datos db4o
             IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
             try
             {
                 // Buscar el empleado por su IdEmpleado usando Query LINQ
-                DTOEmpleado empleado = BD.Query<DTOEmpleado>(x => x.IdEmpleado == id).FirstOrDefault();
+                DTOEmpleado empleado = BD.Query<DTOEmpleado>(x => x.IdEmpleado == idEmpleado).FirstOrDefault();
 
                 // Verificar si se encontró el empleado
                 if (empleado != null)
