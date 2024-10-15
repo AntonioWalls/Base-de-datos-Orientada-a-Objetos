@@ -6,6 +6,8 @@ using System.Linq;
 using Db4objects.Db4o.Query;
 using API_AntonioWalls.DTOsucursal1;
 using Microsoft.Identity.Client;
+using Newtonsoft.Json;
+
 
 namespace API_AntonioWalls.Controllers_Instancia1
 {
@@ -55,6 +57,42 @@ namespace API_AntonioWalls.Controllers_Instancia1
             }
         }
 
+        [HttpGet]
+        [Route("Obtener/{idCliente:int}")]
+        public IActionResult Obtener(int id)
+        {
+            // Abre la base de datos db4o
+            IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
+            try
+            {
+                // Buscar el cliente por su IdCliente usando Query LINQ
+                DTOCliente cliente = BD.Query<DTOCliente>(x => x.IdCliente == id).FirstOrDefault();
+
+                // Verificar si se encontró el cliente
+                if (cliente != null)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = cliente });
+                }
+                else
+                {
+                    // Retorna si no se encontró el cliente con el ID proporcionado
+                    return StatusCode(StatusCodes.Status404NotFound, new { mensaje = "Cliente no encontrado" });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Retorna error en caso de excepción
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+            finally
+            {
+                // Cerrar la base de datos para evitar fugas de recursos
+                BD.Close();
+            }
+        }
+
+
+
         [HttpPost]
         [Route("Guardar")]
         public IActionResult Guardar([FromBody] DTOCliente newCliente)
@@ -62,6 +100,7 @@ namespace API_AntonioWalls.Controllers_Instancia1
             IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
             try
             {
+                // Crear objeto a guardar
                 DTOCliente objeto = new DTOCliente
                 {
                     IdCliente = newCliente.IdCliente,
@@ -81,10 +120,10 @@ namespace API_AntonioWalls.Controllers_Instancia1
                     FechaReg = newCliente.FechaReg,
                     IdSucursal = newCliente.IdSucursal,
                 };
+                
                 BD.Store(objeto);
                 BD.Commit();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-
+                return Ok(new { mensaje = "Cliente guardado correctamente." });
             }
             catch (Exception ex)
             {
@@ -93,8 +132,9 @@ namespace API_AntonioWalls.Controllers_Instancia1
             finally
             {
                 BD.Close();
-            } 
+            }
         }
+
 
         [HttpPut]
         [Route("Editar")]

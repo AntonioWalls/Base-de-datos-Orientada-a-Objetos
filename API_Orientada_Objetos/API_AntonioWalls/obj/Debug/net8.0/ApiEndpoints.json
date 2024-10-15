@@ -58,6 +58,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Cliente",
+    "Method": "Obtener",
+    "RelativePath": "api/Cliente/Obtener/{idCliente}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "idCliente",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
     "Method": "Editar",
     "RelativePath": "api/Empleado/Editar",
@@ -113,6 +134,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
+    "Method": "ObtenerEmpleado",
+    "RelativePath": "api/Empleado/ObtenerEmpleado/{idEmpleado}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "idEmpleado",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]
