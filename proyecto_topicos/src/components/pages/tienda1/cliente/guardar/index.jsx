@@ -54,7 +54,7 @@ const GuardarCliente = ({ onCancel }) => {
             // Generar un número aleatorio entre 1 y 1000
             const randomId = Math.floor(Math.random() * 1000) + 1;
             values.idCliente = randomId;
-            values.idSucursal = 2;
+            values.idSucursal = 1;
             console.log(values);
             dispatch(agregarCliente(values))
                 .then((response) => {

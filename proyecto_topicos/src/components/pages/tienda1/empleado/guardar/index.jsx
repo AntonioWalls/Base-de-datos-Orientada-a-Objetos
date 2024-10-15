@@ -25,8 +25,8 @@ const GuardarEmpleado = ({ onCancel }) => {
         estado: '',
         pais: '',
         cp: '',
-        telEmp: '',
-        correoEmp: '',
+        telefono: '',
+        correo: '',
         curp: '',
         rfc: '',
         nss: '',
@@ -48,8 +48,8 @@ const GuardarEmpleado = ({ onCancel }) => {
         estado: Yup.string().required('Es requerido'),
         pais: Yup.string().required('Es requerido'),
         cp: Yup.number().required('Es requerido').positive('Debe ser un número positivo'),
-        telEmp: Yup.string().required('Es requerido'),
-        correoEmp: Yup.string().email('Email inválido').required('Es requerido'),
+        telefono: Yup.string().required('Es requerido'),
+        correo: Yup.string().email('Email inválido').required('Es requerido'),
         curp: Yup.string().required('Es requerido'),
         rfc: Yup.string().required('Es requerido'),
         nss: Yup.string().required('Es requerido'),
@@ -204,20 +204,20 @@ const GuardarEmpleado = ({ onCancel }) => {
 
                     <Col md={12}>
                         <InputField
-                            controlId="telEmp"
+                            controlId="telefono"
                             label="Teléfono:"
                             type="text"
-                            name="telEmp"
+                            name="telefono"
                             formik={formik}
                         />
                     </Col>
 
                     <Col md={12}>
                         <InputField
-                            controlId="correoEmp"
+                            controlId="correo"
                             label="Correo:"
                             type="email"
-                            name="correoEmp"
+                            name="correo"
                             formik={formik}
                         />
                     </Col>

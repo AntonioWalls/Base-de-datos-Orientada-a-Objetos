@@ -79,11 +79,6 @@ const TablaClientes = ({ mostrarFormulario }) => {
   return (
     dataState && (
       <>
-        {/* Componente para filtrar los clientes */}
-        <FiltroCliente
-          onFilter={(newValues) => setFiltro(newValues)}  // Actualiza los filtros con base en el filtro aplicado
-        />
-        {/* Componente de la tabla Kendo */}
         <TablaKendo
           estructuraTabla={EstructuraClientes}
           funcionEditar={handleEditar}

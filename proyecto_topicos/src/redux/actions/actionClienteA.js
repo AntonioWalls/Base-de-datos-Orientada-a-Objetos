@@ -6,7 +6,7 @@ export const listarCliente = createAsyncThunk(
     "cliente/listarCliente",
     async () => {
       try {
-        const resp = await axios.get('http://localhost:12630/api/ClienteInstancia1/Lista');
+        const resp = await axios.get('http://localhost:12630/api/Cliente/Lista');
         return resp.data;
       } catch (error) {
         return null;
@@ -30,7 +30,7 @@ export const listarCliente = createAsyncThunk(
     "cliente/agregarCliente",
     async (data, { rejectWithValue }) => {
       try {
-        const resp = await axios.post('http://localhost:12630/api/ClienteInstancia1/Guardar', data);
+        const resp = await axios.post('http://localhost:12630/api/Cliente/Guardar', data);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);
@@ -42,7 +42,7 @@ export const listarCliente = createAsyncThunk(
     "cliente/eliminarCliente",
     async (id, { rejectWithValue }) => {
       try {
-        const resp = await axios.delete(`http://localhost:12630/api/ClienteInstancia1/Eliminar?idCliente=${id}`);
+        const resp = await axios.delete(`http://localhost:12630/api/Cliente/Elminar/${id}`);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);
@@ -54,7 +54,7 @@ export const listarCliente = createAsyncThunk(
     "cliente/editarCliente",
     async (data, { rejectWithValue }) => {
       try {
-        const resp = await axios.put('http://localhost:12630/api/ClienteInstancia1/Editar', data);
+        const resp = await axios.put('http://localhost:12630/api/Cliente/Editar', data);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);

@@ -6,7 +6,7 @@ export const listarEmpleado = createAsyncThunk(
     "empleado/listarEmpleado",
     async () => {
       try {
-        const resp = await axios.get('http://localhost:12630/api/EmpleadoInstancia1/Lista');
+        const resp = await axios.get('http://localhost:12630/api/Empleado/Lista');
         return resp.data;
       } catch (error) {
         return null;
@@ -30,7 +30,7 @@ export const listarEmpleado = createAsyncThunk(
     "empleado/agregarEmpleado",
     async (data, { rejectWithValue }) => {
       try {
-        const resp = await axios.post('http://localhost:12630/api/EmpleadoInstancia1/Guardar', data);
+        const resp = await axios.post('http://localhost:12630/api/Empleado/Guardar', data);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);
@@ -42,7 +42,7 @@ export const listarEmpleado = createAsyncThunk(
     "empleado/eliminarEmpleado",
     async (id, { rejectWithValue }) => {
       try {
-        const resp = await axios.delete(`http://localhost:12630/api/EmpleadoInstancia1/Eliminar?idEmpleado=${id}`);
+        const resp = await axios.delete(`http://localhost:12630/api/Empleado/Elminar/${id}`);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);
@@ -54,7 +54,7 @@ export const listarEmpleado = createAsyncThunk(
     "empleado/editarEmpleado",
     async (data, { rejectWithValue }) => {
       try {
-        const resp = await axios.put('http://localhost:12630/api/EmpleadoInstancia1/Editar', data);
+        const resp = await axios.put('http://localhost:12630/api/Empleado/Editar', data);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);

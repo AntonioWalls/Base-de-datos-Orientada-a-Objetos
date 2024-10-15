@@ -84,9 +84,6 @@ const TablaEmpleados = ({ mostrarFormulario }) => {
     dataState && (
       <>
         {/* Componente para filtrar los clientes */}
-        <FiltroEmpleado
-          onFilter={(newValues) => setFiltro(newValues)}  // Actualiza los filtros con base en el filtro aplicado
-        />
         {/* Componente de la tabla Kendo */}
         <TablaKendo
           estructuraTabla={EstructuraEmpleados}
