@@ -12,10 +12,10 @@ namespace API_AntonioWalls.Controllers_Instancia1
     [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteInstancia1 : ControllerBase
+    public class Cliente : ControllerBase
     {
         // Constructor vacío, ya que no necesitas inyectar dependencias
-        public ClienteInstancia1()
+        public Cliente()
         {
         }
 
@@ -177,7 +177,5 @@ namespace API_AntonioWalls.Controllers_Instancia1
             finally { BD.Close(); }
         
         }
-
-
     }
 }

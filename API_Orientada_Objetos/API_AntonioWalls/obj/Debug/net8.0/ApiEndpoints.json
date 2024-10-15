@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Cliente",
     "Method": "Editar",
-    "RelativePath": "api/ClienteInstancia1/Editar",
+    "RelativePath": "api/Cliente/Editar",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -16,9 +16,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Cliente",
     "Method": "Eliminar",
-    "RelativePath": "api/ClienteInstancia1/Elminar/{idCliente}",
+    "RelativePath": "api/Cliente/Elminar/{idCliente}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -32,9 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Cliente",
     "Method": "Guardar",
-    "RelativePath": "api/ClienteInstancia1/Guardar",
+    "RelativePath": "api/Cliente/Guardar",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -48,9 +48,67 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Cliente",
     "Method": "Lista",
-    "RelativePath": "api/ClienteInstancia1/Lista",
+    "RelativePath": "api/Cliente/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
+    "Method": "Editar",
+    "RelativePath": "api/Empleado/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newEmpleado",
+        "Type": "API_AntonioWalls.DTOsucursal1.DTOEmpleado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
+    "Method": "Eliminar",
+    "RelativePath": "api/Empleado/Elminar/{idEmpleado}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpleado",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
+    "Method": "Guardar",
+    "RelativePath": "api/Empleado/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newEmpleado",
+        "Type": "API_AntonioWalls.DTOsucursal1.DTOEmpleado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.Empleado",
+    "Method": "Lista",
+    "RelativePath": "api/Empleado/Lista",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
