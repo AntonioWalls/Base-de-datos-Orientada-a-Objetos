@@ -147,6 +147,37 @@ namespace API_AntonioWalls.Controllers_Instancia1
             }
         }
 
+        [HttpDelete]
+        [Route("Elminar/{idCliente:int}")]
+        public IActionResult Eliminar(int idCliente)
+        {
+            IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
+
+            try
+            {
+                IList<DTOCliente> results = BD.Query<DTOCliente>(c => c.IdCliente == idCliente);
+
+                if (results.Count == 0)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, new { mensaje = "No se encontraron clientes" });
+                }
+
+                DTOCliente cliente = results.First();
+
+                BD.Delete(cliente);
+
+                BD.Commit();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "Cliente eliminado correctamente" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+            finally { BD.Close(); }
+        
+        }
+
 
     }
 }
