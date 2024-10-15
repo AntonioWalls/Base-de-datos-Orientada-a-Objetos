@@ -4583,23 +4583,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fabia\\.nuget\\packages\\": {},
+    "C:\\Users\\Antonio Walls\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\API_AntonioWalls.csproj",
+      "projectUniqueName": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\API_AntonioWalls.csproj",
       "projectName": "API_AntonioWalls",
-      "projectPath": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\API_AntonioWalls.csproj",
-      "packagesPath": "C:\\Users\\fabia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fabia\\OneDrive\\Documentos\\TopicosBD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\obj\\",
+      "projectPath": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\API_AntonioWalls.csproj",
+      "packagesPath": "C:\\Users\\Antonio Walls\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Antonio Walls\\Documents\\Topicos de BD\\Base-de-datos-Orientada-a-Objetos\\API_Orientada_Objetos\\API_AntonioWalls\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fabia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Antonio Walls\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4674,7 +4674,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

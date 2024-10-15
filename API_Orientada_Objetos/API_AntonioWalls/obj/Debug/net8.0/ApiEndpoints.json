@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
+    "Method": "Editar",
+    "RelativePath": "api/ClienteInstancia1/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newCliente",
+        "Type": "API_AntonioWalls.DTOsucursal1.DTOCliente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_AntonioWalls.Controllers_Instancia1.ClienteInstancia1",
     "Method": "Guardar",
     "RelativePath": "api/ClienteInstancia1/Guardar",
     "HttpMethod": "POST",
