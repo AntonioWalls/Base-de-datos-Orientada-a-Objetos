@@ -18,7 +18,7 @@ export const listarEmpleado = createAsyncThunk(
     "empleado/obtenerEmpleado",
     async (id, { rejectWithValue }) => {
       try {
-        const resp = await axios.get(`http://localhost:12630/api/EmpleadoInstancia1/Obtener/${id}`);
+        const resp = await axios.get(`http://localhost:12630/api/Empleado/ObtenerEmpleado/${id}`);
         return resp.data;
       } catch (error) {
         return rejectWithValue(`Error: ${error.message}`);
