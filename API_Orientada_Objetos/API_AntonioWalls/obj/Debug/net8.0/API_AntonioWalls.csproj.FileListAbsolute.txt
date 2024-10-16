@@ -420,3 +420,4 @@ C:\Users\Antonio Walls\Documents\Topicos de BD\Base-de-datos-Orientada-a-Objetos
 C:\Users\Antonio Walls\Documents\Topicos de BD\Base-de-datos-Orientada-a-Objetos\API_Orientada_Objetos\API_AntonioWalls\obj\Debug\net8.0\API_AntonioWalls.pdb
 C:\Users\Antonio Walls\Documents\Topicos de BD\Base-de-datos-Orientada-a-Objetos\API_Orientada_Objetos\API_AntonioWalls\obj\Debug\net8.0\API_AntonioWalls.genruntimeconfig.cache
 C:\Users\Antonio Walls\Documents\Topicos de BD\Base-de-datos-Orientada-a-Objetos\API_Orientada_Objetos\API_AntonioWalls\obj\Debug\net8.0\ref\API_AntonioWalls.dll
+C:\Users\Antonio Walls\Documents\Topicos de BD\Base-de-datos-Orientada-a-Objetos\API_Orientada_Objetos\API_AntonioWalls\bin\Debug\net8.0\Newtonsoft.Json.dll

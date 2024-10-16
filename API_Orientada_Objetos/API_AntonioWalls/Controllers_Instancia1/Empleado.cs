@@ -46,6 +46,42 @@ namespace API_AntonioWalls.Controllers_Instancia1
             finally { BD.Close(); }
         }
 
+        [HttpGet]
+        [Route("ObtenerEmpleado/{idEmpleado:int}")]
+        public IActionResult ObtenerEmpleado(int idEmpleado)
+        {
+            // Abre la base de datos db4o
+            IObjectContainer BD = Db4oFactory.OpenFile("Baseson.yap");
+            try
+            {
+                // Buscar el empleado por su IdEmpleado usando Query LINQ
+                DTOEmpleado empleado = BD.Query<DTOEmpleado>(x => x.IdEmpleado == idEmpleado).FirstOrDefault();
+
+                // Verificar si se encontró el empleado
+                if (empleado != null)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = empleado });
+                }
+                else
+                {
+                    // Retorna si no se encontró el empleado con el ID proporcionado
+                    return StatusCode(StatusCodes.Status404NotFound, new { mensaje = "Empleado no encontrado" });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Retorna error en caso de excepción
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+            finally
+            {
+                // Cerrar la base de datos para evitar fugas de recursos
+                BD.Close();
+            }
+        }
+
+
+
         [HttpPost]
         [Route("Guardar")]
         public IActionResult Guardar([FromBody] DTOEmpleado newEmpleado)
